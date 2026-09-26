@@ -23,6 +23,8 @@ public class TrainCar : MonoBehaviour
 
     public void UseTrainCarAbility()
     {
+        if (!isSelected) return;
+
         turret.StartTurretAbility();
     }
 
