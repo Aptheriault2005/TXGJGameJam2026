@@ -43,5 +43,10 @@ public class TrainCar : MonoBehaviour
         selectionIndicator.SetActive(false);
         turret.StopTurretAbility();
     }
+
+    public void OnDeath()
+    {
+        Debug.Log("Death");
+    }
 }
 

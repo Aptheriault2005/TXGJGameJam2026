@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6964863003572422406}
   - component: {fileID: 9216611537543396178}
+  - component: {fileID: 3602493522242026214}
   m_Layer: 6
   m_Name: TrainCar
   m_TagString: Untagged
@@ -48,6 +49,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   selectionIndicator: {fileID: 2524611204061647884}
   turret: {fileID: 2078098655441236690}
+--- !u!114 &3602493522242026214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238334312049360247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e416de1f31bae47b31019dea076b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9216611537543396178}
+        m_TargetAssemblyTypeName: TrainCar, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  maxHealth: 10
+  currentHealth: 10
 --- !u!1 &2524611204061647884
 GameObject:
   m_ObjectHideFlags: 0
