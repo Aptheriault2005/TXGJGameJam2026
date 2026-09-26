@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class Train : MonoBehaviour
 {
+    [SerializeField] private GameObject mousePositionIndicator;
     [SerializeField] private List<TrainCar> trainCars;
     private int currentIndex = 0;
     private PlayerActions playerActions;
@@ -34,6 +35,17 @@ public class Train : MonoBehaviour
 
         currentIndex = 0;
         GetCurrentTrainCar().SelectTrainCar();
+    }
+
+    private void Update()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000)) 
+        {
+            Debug.Log($"{hitInfo.point} {hitInfo.distance}");
+            mousePositionIndicator.transform.position = new Vector3(hitInfo.point.x, 0, hitInfo.point.z);
+            GetCurrentTrainCar().MousePositionUpdate(mousePositionIndicator);
+        }
     }
 
     private void OnAbilityUsed(InputAction.CallbackContext context) 
