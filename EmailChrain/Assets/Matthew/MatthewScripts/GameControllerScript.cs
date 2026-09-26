@@ -8,7 +8,7 @@ public class GameControllerScript : MonoBehaviour
 
     public float levelTimer;
     public float maxLevelTime;
-    int waveCounter;
+    public int waveCounter;
     [SerializeField] int maxWave;
     [SerializeField] UpgradeSelection usScreen;
 
@@ -17,7 +17,7 @@ public class GameControllerScript : MonoBehaviour
     {
         levelTimer = maxLevelTime;
         waveCounter = 0;
-        StartCoroutine(Delay(maxLevelTime + 1.5f));
+        StartCoroutine(EndWaveDelay(maxLevelTime + 1.5f));
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class GameControllerScript : MonoBehaviour
 
     }
 
-    IEnumerator Delay(float time) {
+    IEnumerator EndWaveDelay(float time) {
         yield return new WaitForSeconds(time);
         WaveEnd();
     }
@@ -39,5 +39,20 @@ public class GameControllerScript : MonoBehaviour
         else {
             usScreen.Displayed();
         }
+    }
+
+    public void UpgradeButtonClicked() {
+        StartCoroutine(NextWaveDelay(1));
+    }
+
+    IEnumerator NextWaveDelay(float time) {
+        yield return new WaitForSeconds(time);
+        NextWave();
+    }
+
+    void NextWave() {
+        waveCounter += 1;
+        levelTimer = maxLevelTime;
+        StartCoroutine(EndWaveDelay(maxLevelTime + 1.5f));
     }
 }
