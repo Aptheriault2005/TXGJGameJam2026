@@ -115,6 +115,8 @@ public class Train : MonoBehaviour
         trainCars.Add(trainCar);
         nextTrainCarPosition.transform.position += new Vector3(0, 0, -2.1f);
         UpdateCameraPosition();
+
+        //GetUpgrades();
     }
 
     public void RemoveLastTrainCar()
@@ -136,6 +138,23 @@ public class Train : MonoBehaviour
 
             UpdateCameraPosition();
         }
+    }
+
+    public List<Upgrade> GetUpgrades()
+    {
+        List<Upgrade> upgrades = new List<Upgrade>();
+
+        Debug.Log("---");
+        for (int i = 0; i < 3; i++)
+        {   
+            Upgrade upgrade = UpgradeSystem.CreateUpgrade(trainCars, RNG.rng.Next(0, trainCars.Count));
+            upgrades.Add(upgrade);
+            Debug.Log($"{upgrade.name}, {upgrade.description}");
+        }
+        //upgrades[0].ApplyUpgrade();
+        Debug.Log("---");
+
+        return upgrades;
     }
 
     private void UpdateCameraPosition()

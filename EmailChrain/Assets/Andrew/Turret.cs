@@ -1,10 +1,11 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Turret : MonoBehaviour
 {
     [SerializeField] private GameObject turretPivot;
     [SerializeField] private GameObject bulletSpawnPoint;
-    [SerializeField] private TurretStats turretStats;
+    public TurretStats turretStats;
 
     private ITrainCarAbility trainCarAbility;
     private bool isAbilityActive = false;
@@ -14,15 +15,9 @@ public class Turret : MonoBehaviour
     void Awake()
     {
         rng = new();
-        if (turretStats.ProjectileStats is BulletStats bulletStats)
-        {
-            trainCarAbility = new GunAbility(bulletStats, this);
 
-        }
-        else if (turretStats.ProjectileStats is MissileStats missileStats)
-        {
-            trainCarAbility = new MissileAbility(missileStats, this);
-        }
+        turretStats = turretStats.Copy();
+        trainCarAbility = new ProjectileAbility(turretStats.ProjectileStats, this);
     }
 
     private void Update()
@@ -44,14 +39,7 @@ public class Turret : MonoBehaviour
     public void SetTurretAbility(TurretStats turretStats)
     {
         this.turretStats = turretStats;
-        if (turretStats.ProjectileStats is BulletStats bulletStats)
-        {
-            trainCarAbility = new GunAbility(bulletStats, this);
-        }
-        else if (turretStats.ProjectileStats is MissileStats missileStats)
-        {
-            trainCarAbility = new MissileAbility(missileStats, this);
-        }
+        trainCarAbility = new ProjectileAbility(turretStats.ProjectileStats, this);
     }
 
     public void StartTurretAbility()
@@ -86,45 +74,33 @@ public interface ITrainCarAbility
     public void UseAbility();
 }
 
-public class GunAbility : ITrainCarAbility
+public class ProjectileAbility : ITrainCarAbility
 {
     public Turret Turret;
-    public BulletStats BulletStats;
+    public ProjectileStats ProjectileStats;
 
-    public GunAbility(BulletStats bulletStats, Turret turret)
+    public ProjectileAbility(ProjectileStats projectileStats, Turret turret)
     {
-        BulletStats = bulletStats;
         Turret = turret;
+        ProjectileStats = projectileStats;
     }
 
     public void UseAbility()
     {
         Debug.Log($"{Turret.gameObject.name} train car abilty used");
-        GameObject bullet = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
-        bullet.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
-        bullet.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
-        bullet.GetComponent<Bullet>().stats = BulletStats;
-        bullet.GetComponent<Bullet>().Shoot();
-    }
-}
-
-public class MissileAbility : ITrainCarAbility
-{
-    public Turret Turret;
-    public MissileStats MissileStats;
-
-    public MissileAbility(MissileStats missileStats, Turret turret)
-    {
-        MissileStats = missileStats;
-        Turret = turret;
-    }
-
-    public void UseAbility() 
-    {
-        GameObject missile = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
-        missile.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
-        missile.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
-        missile.GetComponent<Missile>().stats = MissileStats;
-        missile.GetComponent<Missile>().Shoot();
+        GameObject projectile = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
+        projectile.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
+        projectile.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
+        
+        if (ProjectileStats is BulletStats bulletStats)
+        {
+            projectile.GetComponent<Bullet>().stats = bulletStats;
+            projectile.GetComponent<Bullet>().Shoot();
+        }
+        else if (ProjectileStats is MissileStats missileStats)
+        {
+            projectile.GetComponent<Missile>().stats = missileStats;
+            projectile.GetComponent<Missile>().Shoot();
+        }
     }
 }

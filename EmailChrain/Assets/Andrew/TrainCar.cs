@@ -4,7 +4,7 @@ using UnityEngine;
 public class TrainCar : MonoBehaviour
 {
     [SerializeField] private GameObject selectionIndicator;
-    [SerializeField] private Turret turret;
+    public Turret turret;
 
     private bool isSelected = false;
 
