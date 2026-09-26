@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TestTrainHealth : MonoBehaviour
+public class TestTrain : MonoBehaviour
 {
 
     private float maxHp;
