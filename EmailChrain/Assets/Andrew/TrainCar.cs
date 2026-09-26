@@ -5,6 +5,8 @@ public class TrainCar : MonoBehaviour
 {
     [SerializeField] private GameObject selectionIndicator;
     [SerializeField] private GameObject turretPivot;
+    [SerializeField] private GameObject bulletSpawnPoint;
+    [SerializeField] private GameObject bulletPrefab;
 
     private bool isSelected = false;
 
@@ -21,6 +23,7 @@ public class TrainCar : MonoBehaviour
     public void UseTrainCarAbility()
     {
         Debug.Log($"{gameObject.name} train car abilty used");
+        Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
     }
 
     public void SelectTrainCar() 
