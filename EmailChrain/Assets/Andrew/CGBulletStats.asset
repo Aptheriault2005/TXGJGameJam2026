@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde5e1cf41d908a40a874884772f3a72, type: 3}
-  m_Name: MGBulletStats
+  m_Name: CGBulletStats
   m_EditorClassIdentifier: Assembly-CSharp::BulletStats
-  Prefab: {fileID: 6250554593722900600, guid: bd05ad6398085a3458919f4d3f0be262, type: 3}
-  BulletSpeed: 15
+  Prefab: {fileID: 6250554593722900600, guid: 37d9fa2df393224468c849d627a320d6, type: 3}
+  BulletSpeed: 10
   Lifetime: 2
   DestroyEffect: {fileID: 11400000, guid: 205d6f537521b4f4f9a9304a4035d235, type: 2}

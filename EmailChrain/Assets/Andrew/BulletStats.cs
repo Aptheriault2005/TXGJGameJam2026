@@ -4,6 +4,7 @@ using UnityEngine;
 public class BulletStats : ScriptableObject
 {
     public GameObject Prefab;
+    public float BulletDamage = 5f;
     public float BulletSpeed = 10.0f;
     public float Lifetime = 2f;
     public DestroyEffect DestroyEffect;
@@ -23,6 +24,7 @@ public class BulletStats : ScriptableObject
         bs.SetLifetime(Lifetime);
         bs.SetDestroyEffect(DestroyEffect);
         bs.SetPrefab(Prefab);
+        bs.SetBulletDamage(BulletDamage);
         return bs;
 
         //return new BulletStats(Prefab, BulletSpeed, Lifetime, DestroyEffect);
@@ -37,6 +39,12 @@ public class BulletStats : ScriptableObject
     public BulletStats SetBulletSpeed(float bulletSpeed)
     {
         BulletSpeed = bulletSpeed;
+        return this;
+    }
+
+    public BulletStats SetBulletDamage(float bulletDamage)
+    {
+        BulletSpeed = bulletDamage;
         return this;
     }
 

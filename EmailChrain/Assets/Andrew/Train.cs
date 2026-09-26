@@ -16,6 +16,7 @@ public class Train : MonoBehaviour
         playerActions = new();
         playerActions.PlayerControls.Enable();
         playerActions.PlayerControls.UseAbility.performed += OnAbilityUsed;
+        playerActions.PlayerControls.UseAbility.canceled += OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed += OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed += OnSelectionMoveDown;
         playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
@@ -25,6 +26,7 @@ public class Train : MonoBehaviour
     private void OnDestroy()
     {
         playerActions.PlayerControls.UseAbility.performed -= OnAbilityUsed;
+        playerActions.PlayerControls.UseAbility.canceled -= OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed -= OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed -= OnSelectionMoveDown;
         playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
@@ -65,6 +67,11 @@ public class Train : MonoBehaviour
     private void OnAbilityUsed(InputAction.CallbackContext context) 
     {
         GetCurrentTrainCar().UseTrainCarAbility();
+    }
+
+    private void OnAbilityCanceled(InputAction.CallbackContext context)
+    {
+        GetCurrentTrainCar().StopTrainCarAbility();
     }
 
     private void OnSelectionMoveUp(InputAction.CallbackContext context) 

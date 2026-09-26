@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6964863003572422406}
   - component: {fileID: 9216611537543396178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrainCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,10 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   selectionIndicator: {fileID: 2524611204061647884}
-  turretPivot: {fileID: 4362959143940639098}
-  bulletSpawnPoint: {fileID: 6667318593479412790}
-  bulletPrefab: {fileID: 6250554593722900600, guid: bd05ad6398085a3458919f4d3f0be262, type: 3}
-  bulletStats: {fileID: 11400000, guid: bb5851ffb7dc24a4c93a9b4cdbe2e236, type: 2}
+  turret: {fileID: 2078098655441236690}
 --- !u!1 &2524611204061647884
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +60,7 @@ GameObject:
   - component: {fileID: 6541400952890439266}
   - component: {fileID: 9086818292464159171}
   - component: {fileID: 3149619723895233985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SelectionIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +172,7 @@ GameObject:
   - component: {fileID: 937629897947819965}
   - component: {fileID: 2650107967029992610}
   - component: {fileID: 2584225503158946406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrainBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +282,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4485534791393192179}
-  m_Layer: 0
+  - component: {fileID: 2078098655441236690}
+  m_Layer: 6
   m_Name: TurretPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,6 +307,21 @@ Transform:
   - {fileID: 3738334906165674516}
   m_Father: {fileID: 6964863003572422406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2078098655441236690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362959143940639098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829f7acbfd6cd4f4dbf5fc9b44ed895f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  turretPivot: {fileID: 4362959143940639098}
+  bulletSpawnPoint: {fileID: 6667318593479412790}
+  turretStats: {fileID: 11400000, guid: 538208987ed8ae440a3f8e6239944e71, type: 2}
 --- !u!1 &4771113890264392683
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +334,7 @@ GameObject:
   - component: {fileID: 317659544164945329}
   - component: {fileID: 3987454462558487589}
   - component: {fileID: 5664874945794144920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrainTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3738334906165674516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
