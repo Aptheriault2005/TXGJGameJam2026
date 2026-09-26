@@ -58,6 +58,8 @@ public class GameControllerScript : MonoBehaviour
         waveCounter += 1;
         levelTimer = maxLevelTime;
         train.trainCars[0].SelectTrainCar();
+        train.trainCars[0].DeselectTrainCar();
+        train.trainCars[0].SelectTrainCar();
         StartCoroutine(EndWaveDelay(maxLevelTime + 1.5f));
     }
 }

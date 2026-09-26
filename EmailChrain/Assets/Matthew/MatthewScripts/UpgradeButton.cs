@@ -6,6 +6,7 @@ public class UpgradeButton : MonoBehaviour
 {
 
     [SerializeField] GameControllerScript gcs;
+    public Upgrade upgrade;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,9 +21,10 @@ public class UpgradeButton : MonoBehaviour
     }
 
     public void OnClick() {
-        string upgrade = GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
-        print(upgrade);
+        upgrade.ApplyUpgrade();
         gcs.UpgradeButtonClicked();
         transform.parent.gameObject.SetActive(false);
+
+
     }
 }
