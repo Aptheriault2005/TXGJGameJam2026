@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TurretStats", menuName = "Scriptable Objects/TurretStats")]
 public class TurretStats : ScriptableObject
 {
+    public string Name;
     public ProjectileStats ProjectileStats;
     public float FireRate;
     public int ProjectileSpray;
@@ -10,6 +11,7 @@ public class TurretStats : ScriptableObject
     public TurretStats Copy()
     {
         TurretStats copy = CreateInstance<TurretStats>();
+        copy.Name = Name;
         copy.ProjectileStats = ProjectileStats;
         copy.FireRate = FireRate;
         copy.ProjectileSpray = ProjectileSpray;
