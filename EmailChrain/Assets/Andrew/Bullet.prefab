@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4878777718213113216}
   - component: {fileID: 8029007016593004243}
   - component: {fileID: 8594704056022465616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -153,4 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530572e7fbde88949b21342ceff8dc50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  prefab: {fileID: 0}
   BulletSpeed: 10
+  lifeTime: 2

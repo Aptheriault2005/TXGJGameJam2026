@@ -50,6 +50,7 @@ MonoBehaviour:
   turretPivot: {fileID: 4362959143940639098}
   bulletSpawnPoint: {fileID: 6667318593479412790}
   bulletPrefab: {fileID: 6250554593722900600, guid: bd05ad6398085a3458919f4d3f0be262, type: 3}
+  bulletStats: {fileID: 11400000, guid: bb5851ffb7dc24a4c93a9b4cdbe2e236, type: 2}
 --- !u!1 &2524611204061647884
 GameObject:
   m_ObjectHideFlags: 0

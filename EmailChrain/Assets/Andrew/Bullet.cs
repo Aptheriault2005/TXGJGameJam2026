@@ -1,27 +1,39 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    public float BulletSpeed = 10.0f;
-    public float lifeTime = 2f;
+    public BulletStats stats;
 
-    void Start()
+    public void Shoot(BulletStats bulletStats)
     {
+        stats = bulletStats;
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = transform.forward * BulletSpeed;
-        StartCoroutine(DestroyAfterTime(lifeTime));
+        rb.linearVelocity = transform.forward * bulletStats.BulletSpeed;
+        StartCoroutine(DestroyAfterTime(bulletStats.Lifetime));
     }
 
     IEnumerator DestroyAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-        Destroy(gameObject);
+        DestroyEffect();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        DestroyEffect();
+    }
+
+    public void DestroyEffect()
+    {
+        if (stats.DestroyEffect != null)
+        {
+            stats.DestroyEffect.Activate(this);
+        }
+
         Destroy(gameObject);
     }
 }

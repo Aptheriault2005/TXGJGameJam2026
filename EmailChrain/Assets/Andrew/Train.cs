@@ -47,7 +47,6 @@ public class Train : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000)) 
         {
-            Debug.Log($"{hitInfo.point} {hitInfo.distance}");
             mousePositionIndicator.transform.position = new Vector3(hitInfo.point.x, 0, hitInfo.point.z);
             GetCurrentTrainCar().MousePositionUpdate(mousePositionIndicator);
         }
