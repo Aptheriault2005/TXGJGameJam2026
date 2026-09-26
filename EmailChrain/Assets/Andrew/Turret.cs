@@ -14,7 +14,15 @@ public class Turret : MonoBehaviour
     void Awake()
     {
         rng = new();
-        trainCarAbility = new GunAbility(turretStats.BulletStats, this);
+        if (turretStats.ProjectileStats is BulletStats bulletStats)
+        {
+            trainCarAbility = new GunAbility(bulletStats, this);
+
+        }
+        else if (turretStats.ProjectileStats is MissileStats missileStats)
+        {
+            trainCarAbility = new MissileAbility(missileStats, this);
+        }
     }
 
     private void Update()
@@ -27,7 +35,7 @@ public class Turret : MonoBehaviour
             {
                 timeSinceLastUse = 0;
                 bulletSpawnPoint.transform.localRotation = Quaternion.identity;
-                bulletSpawnPoint.transform.Rotate(0f, (float)rng.Next(-turretStats.BulletSpray, turretStats.BulletSpray), 0f);
+                bulletSpawnPoint.transform.Rotate(0f, (float)rng.Next(-turretStats.ProjectileSpray, turretStats.ProjectileSpray), 0f);
                 trainCarAbility.UseAbility();
             }
         }
@@ -36,7 +44,14 @@ public class Turret : MonoBehaviour
     public void SetTurretAbility(TurretStats turretStats)
     {
         this.turretStats = turretStats;
-        trainCarAbility = new GunAbility(turretStats.BulletStats, this);
+        if (turretStats.ProjectileStats is BulletStats bulletStats)
+        {
+            trainCarAbility = new GunAbility(bulletStats, this);
+        }
+        else if (turretStats.ProjectileStats is MissileStats missileStats)
+        {
+            trainCarAbility = new MissileAbility(missileStats, this);
+        }
     }
 
     public void StartTurretAbility()
@@ -57,7 +72,7 @@ public class Turret : MonoBehaviour
 
     public GameObject GetProjectilePrefab()
     {
-        return turretStats.BulletStats.Prefab;
+        return turretStats.ProjectileStats.Prefab;
     }
 
     public GameObject GetProjectileSpawnPoint() 
@@ -88,6 +103,28 @@ public class GunAbility : ITrainCarAbility
         GameObject bullet = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
         bullet.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
         bullet.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
-        bullet.GetComponent<Bullet>().Shoot(BulletStats);
+        bullet.GetComponent<Bullet>().stats = BulletStats;
+        bullet.GetComponent<Bullet>().Shoot();
+    }
+}
+
+public class MissileAbility : ITrainCarAbility
+{
+    public Turret Turret;
+    public MissileStats MissileStats;
+
+    public MissileAbility(MissileStats missileStats, Turret turret)
+    {
+        MissileStats = missileStats;
+        Turret = turret;
+    }
+
+    public void UseAbility() 
+    {
+        GameObject missile = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
+        missile.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
+        missile.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
+        missile.GetComponent<Missile>().stats = MissileStats;
+        missile.GetComponent<Missile>().Shoot();
     }
 }

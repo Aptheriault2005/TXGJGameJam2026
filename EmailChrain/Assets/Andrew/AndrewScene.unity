@@ -811,12 +811,12 @@ PrefabInstance:
       objectReference: {fileID: 673189175}
     - target: {fileID: 7522069236953826952, guid: b233856047a7aed419c331f9f04d8913, type: 3}
       propertyPath: turretStatsList.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7522069236953826952, guid: b233856047a7aed419c331f9f04d8913, type: 3}
       propertyPath: 'turretStatsList.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 3cdb97c92db099543b9b8d57647a19ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 163c8ac03aee64b42a52a372913079f5, type: 2}
     - target: {fileID: 7522069236953826952, guid: b233856047a7aed419c331f9f04d8913, type: 3}
       propertyPath: 'turretStatsList.Array.data[1]'
       value: 
@@ -825,6 +825,10 @@ PrefabInstance:
       propertyPath: 'turretStatsList.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: 585468407981437488fcb869d18863e6, type: 2}
+    - target: {fileID: 7522069236953826952, guid: b233856047a7aed419c331f9f04d8913, type: 3}
+      propertyPath: 'turretStatsList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 163c8ac03aee64b42a52a372913079f5, type: 2}
     - target: {fileID: 8707422329167159173, guid: b233856047a7aed419c331f9f04d8913, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
