@@ -30,6 +30,13 @@ public class TestTrain : MonoBehaviour
     void Damaged(float dmg) {
         health -= dmg;
         ths.UpdateHealth(health, maxHp);
+        if (this.health <= 0) {
+            this.Dead();
+        }
+    }
+
+    void Dead() {
+        print(this.gameObject + " has been destroyed.");
     }
 
 }

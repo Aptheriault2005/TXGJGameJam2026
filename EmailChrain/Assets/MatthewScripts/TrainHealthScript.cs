@@ -14,6 +14,7 @@ public class TrainHealthScript : MonoBehaviour
         canvasObject = (Canvas) FindFirstObjectByType(typeof(Canvas));
 
         hpBar = (Slider) Instantiate(prefab, new Vector3(0,0,0), Quaternion.Euler(0, 0, 0));
+        hpBar.value = 1;
         hpBar.transform.SetParent(canvasObject.transform, false);
 
         Vector2 ViewportPosition=Camera.main.WorldToViewportPoint(this.transform.position);
