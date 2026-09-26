@@ -16,7 +16,6 @@ public class ProgressBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pBar.value = (Time.deltaTime / controller.levelTimer);
-        
+        pBar.value = ((controller.maxLevelTime - controller.levelTimer) / controller.maxLevelTime);
     }
 }
