@@ -11,6 +11,7 @@ public class GameControllerScript : MonoBehaviour
     public int waveCounter;
     [SerializeField] int maxWave;
     [SerializeField] UpgradeSelection usScreen;
+    [SerializeField] Train train;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,9 @@ public class GameControllerScript : MonoBehaviour
             SceneManager.LoadScene("EndWinScreen");
         }
         else {
+            foreach(TrainCar t in train.trainCars) {
+                t.DeselectTrainCar();
+            }
             usScreen.Displayed();
         }
     }
@@ -53,6 +57,7 @@ public class GameControllerScript : MonoBehaviour
     void NextWave() {
         waveCounter += 1;
         levelTimer = maxLevelTime;
+        train.trainCars[0].SelectTrainCar();
         StartCoroutine(EndWaveDelay(maxLevelTime + 1.5f));
     }
 }

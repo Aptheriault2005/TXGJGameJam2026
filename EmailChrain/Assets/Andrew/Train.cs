@@ -5,7 +5,11 @@ using UnityEngine.InputSystem;
 public class Train : MonoBehaviour
 {
     [SerializeField] private GameObject mousePositionIndicator;
+<<<<<<< Updated upstream
     [SerializeField] private List<TurretStats> turretStatsList = new();
+=======
+    [SerializeField] public List<TrainCar> trainCars;
+>>>>>>> Stashed changes
     [SerializeField] private GameObject trainCarPrefab;
     [SerializeField] private GameObject nextTrainCarPosition;
 
