@@ -6,10 +6,10 @@ public class Train : MonoBehaviour
 {
     [SerializeField] private GameObject mousePositionIndicator;
     [SerializeField] private List<TurretStats> turretStatsList = new();
+    [SerializeField] public List<TrainCar> trainCars = new ();
     [SerializeField] private GameObject trainCarPrefab;
     [SerializeField] private GameObject nextTrainCarPosition;
 
-    private List<TrainCar> trainCars = new();
     private int currentIndex = 0;
     private PlayerActions playerActions;
     private System.Random rng;
@@ -145,13 +145,20 @@ public class Train : MonoBehaviour
         List<Upgrade> upgrades = new List<Upgrade>();
 
         Debug.Log("---");
-        for (int i = 0; i < 3; i++)
+
+        Upgrade upgrade = UpgradeSystem.CreateNewTrainCarUpgrade(this, turretStatsList, RNG.rng.Next(0, turretStatsList.Count));
+        upgrades.Add(upgrade);
+        Debug.Log($"{upgrade.name}, {upgrade.description}");
+
+        for (int i = 0; i < 2; i++)
         {   
-            Upgrade upgrade = UpgradeSystem.CreateUpgrade(trainCars, RNG.rng.Next(0, trainCars.Count));
+            upgrade = UpgradeSystem.CreateUpgrade(this, trainCars, RNG.rng.Next(0, trainCars.Count));
             upgrades.Add(upgrade);
             Debug.Log($"{upgrade.name}, {upgrade.description}");
         }
-        //upgrades[0].ApplyUpgrade();
+
+        //upgrades[RNG.rng.Next(0, 3)].ApplyUpgrade();
+
         Debug.Log("---");
 
         return upgrades;
