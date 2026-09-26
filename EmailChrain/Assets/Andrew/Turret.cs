@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
     void Awake()
     {
         rng = new();
-        trainCarAbility = new MachineGunAbility(turretStats.BulletStats, this);
+        trainCarAbility = new GunAbility(turretStats.BulletStats, this);
     }
 
     private void Update()
@@ -31,6 +31,12 @@ public class Turret : MonoBehaviour
                 trainCarAbility.UseAbility();
             }
         }
+    }
+
+    public void SetTurretAbility(TurretStats turretStats)
+    {
+        this.turretStats = turretStats;
+        trainCarAbility = new GunAbility(turretStats.BulletStats, this);
     }
 
     public void StartTurretAbility()
@@ -65,12 +71,12 @@ public interface ITrainCarAbility
     public void UseAbility();
 }
 
-public class MachineGunAbility : ITrainCarAbility
+public class GunAbility : ITrainCarAbility
 {
     public Turret Turret;
     public BulletStats BulletStats;
 
-    public MachineGunAbility(BulletStats bulletStats, Turret turret)
+    public GunAbility(BulletStats bulletStats, Turret turret)
     {
         BulletStats = bulletStats;
         Turret = turret;

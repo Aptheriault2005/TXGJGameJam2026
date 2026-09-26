@@ -9,14 +9,6 @@ public class BulletStats : ScriptableObject
     public float Lifetime = 2f;
     public DestroyEffect DestroyEffect;
 
-    //public BulletStats(GameObject prefab, float bulletSpeed, float lifeTime, DestroyEffect destroyEffect)
-    //{
-    //    Prefab = prefab;
-    //    BulletSpeed = bulletSpeed;
-    //    Lifetime = lifeTime;
-    //    DestroyEffect = destroyEffect;
-    //}
-
     public BulletStats Copy()
     {
         BulletStats bs = CreateInstance<BulletStats>();

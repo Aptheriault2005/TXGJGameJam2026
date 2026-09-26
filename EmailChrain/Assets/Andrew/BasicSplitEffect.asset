@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5a518cb0ab9cc46930fa03c7f73f96, type: 3}
   m_Name: BasicSplitEffect
   m_EditorClassIdentifier: Assembly-CSharp::BulletSplitEffect
-  bullet: {fileID: 0}
-  prefab: {fileID: 6250554593722900600, guid: bd05ad6398085a3458919f4d3f0be262, type: 3}
+  splitBulletStats: {fileID: 11400000, guid: d7f328b8350a9124183eb06770167ea8, type: 2}
   count: 2

@@ -5,14 +5,18 @@ using UnityEngine.InputSystem;
 public class Train : MonoBehaviour
 {
     [SerializeField] private GameObject mousePositionIndicator;
-    [SerializeField] private List<TrainCar> trainCars;
+    [SerializeField] private List<TurretStats> turretStatsList = new();
     [SerializeField] private GameObject trainCarPrefab;
     [SerializeField] private GameObject nextTrainCarPosition;
+
+    private List<TrainCar> trainCars = new();
     private int currentIndex = 0;
     private PlayerActions playerActions;
+    private System.Random rng;
 
     private void Awake()
     {
+        rng = new System.Random();
         playerActions = new();
         playerActions.PlayerControls.Enable();
         playerActions.PlayerControls.UseAbility.performed += OnAbilityUsed;
@@ -36,7 +40,7 @@ public class Train : MonoBehaviour
 
     private void Start()
     {
-        AddTrainCar();
+        AddTrainCar(turretStatsList[rng.Next(0, turretStatsList.Count)]);
         //AddTrainCar();
         //AddTrainCar();
 
@@ -56,7 +60,7 @@ public class Train : MonoBehaviour
 
     private void OnNewTrainCar(InputAction.CallbackContext context)
     {
-        AddTrainCar();
+        AddTrainCar(turretStatsList[rng.Next(0, turretStatsList.Count)]);
     }
 
     private void OnDestroyTrainCar(InputAction.CallbackContext context)
@@ -101,12 +105,13 @@ public class Train : MonoBehaviour
         return trainCars[currentIndex];
     }
 
-    public void AddTrainCar() 
+    public void AddTrainCar(TurretStats turretStats) 
     {
         GameObject newCar = Instantiate(trainCarPrefab, transform);
         newCar.transform.position = nextTrainCarPosition.transform.position;
         TrainCar trainCar = newCar.GetComponent<TrainCar>();
         trainCar.DeselectTrainCar();
+        trainCar.SetTrainAbility(turretStats);
         trainCars.Add(trainCar);
         nextTrainCarPosition.transform.position += new Vector3(0, 0, -2.1f);
         UpdateCameraPosition();
