@@ -1,21 +1,13 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BulletStats : ScriptableObject
+public class BulletStats : ProjectileStats
 {
-    public GameObject Prefab;
+    //public GameObject Prefab;
     public float BulletDamage = 5f;
     public float BulletSpeed = 10.0f;
     public float Lifetime = 2f;
-    public DestroyEffect DestroyEffect;
-
-    //public BulletStats(GameObject prefab, float bulletSpeed, float lifeTime, DestroyEffect destroyEffect)
-    //{
-    //    Prefab = prefab;
-    //    BulletSpeed = bulletSpeed;
-    //    Lifetime = lifeTime;
-    //    DestroyEffect = destroyEffect;
-    //}
+    //public DestroyEffect DestroyEffect;
 
     public BulletStats Copy()
     {

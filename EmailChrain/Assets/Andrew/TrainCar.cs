@@ -4,7 +4,7 @@ using UnityEngine;
 public class TrainCar : MonoBehaviour
 {
     [SerializeField] private GameObject selectionIndicator;
-    [SerializeField] private Turret turret;
+    public Turret turret;
 
     private bool isSelected = false;
 
@@ -14,6 +14,11 @@ public class TrainCar : MonoBehaviour
         {
             turret.MoveTurret(mousePosIndicator.transform);
         }
+    }
+
+    public void SetTrainAbility(TurretStats turretStats)
+    {
+        turret.SetTurretAbility(turretStats);
     }
 
     public void UseTrainCarAbility()
@@ -40,26 +45,3 @@ public class TrainCar : MonoBehaviour
     }
 }
 
-//public interface ITrainCarAbility
-//{
-//    public void UseAbility(TrainCar trainCar);
-//}
-
-//public class MachineGunAbility : ITrainCarAbility
-//{
-//    BulletStats BulletStats;
-
-//    public MachineGunAbility(BulletStats bulletStats)
-//    {
-//        BulletStats = bulletStats;
-//    }
-
-//    public void UseAbility(TrainCar trainCar)
-//    {
-//        Debug.Log($"{trainCar.gameObject.name} train car abilty used");
-//        GameObject bullet = ProjectilesSingleton.instance.Spawn(trainCar.GetProjectilePrefab());
-//        bullet.gameObject.transform.position = trainCar.GetProjectileSpawnPoint().transform.position;
-//        bullet.gameObject.transform.rotation = trainCar.GetProjectileSpawnPoint().transform.rotation;
-//        bullet.GetComponent<Bullet>().Shoot(BulletStats);
-//    }
-//}

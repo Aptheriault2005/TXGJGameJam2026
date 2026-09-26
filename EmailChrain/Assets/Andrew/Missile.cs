@@ -1,17 +1,30 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Bullet : Projectile
+public class Missile : Projectile
 {
-    public BulletStats stats;
+    public MissileStats stats;
 
     public override void Shoot()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = transform.forward * stats.BulletSpeed;
+        rb.linearVelocity = transform.forward * 3f;
+        transform.rotation = Quaternion.Euler(0, RNG.rng.Next(-90, 90), 0);
+
+        StartCoroutine(ArmMissile(stats.ArmingTime));
+    }
+
+    IEnumerator ArmMissile(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Launch();
+    }
+
+    public void Launch()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.linearVelocity = transform.forward * stats.MissileSpeed;
         StartCoroutine(DestroyAfterTime(stats.Lifetime));
     }
 
