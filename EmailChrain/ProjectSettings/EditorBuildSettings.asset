@@ -15,8 +15,14 @@ EditorBuildSettings:
     path: Assets/Matthew/MatthewScenes/EndScreen.unity
     guid: a1486831627fc9d43939f5834db4a52a
   - enabled: 1
-    path: Assets/Matthew/MainScene.unity
+    path: Assets/Matthew/MatthewScenes/MainScene.unity
     guid: 364867a244abd5445a378b4503a43ff6
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/EndWinScreen.unity
+    guid: 715dd06ee4711ae42a65400f4e866dc9
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/EndLoseScreen.unity
+    guid: af72f537bf72f5d419e68b237d5ae537
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
