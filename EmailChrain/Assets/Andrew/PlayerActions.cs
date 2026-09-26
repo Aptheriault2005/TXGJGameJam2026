@@ -118,6 +118,24 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NewTrainCar"",
+                    ""type"": ""Button"",
+                    ""id"": ""b42d4bdf-94c1-4ed8-98f3-32c4864e2b73"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DestroyTrainCar"",
+                    ""type"": ""Button"",
+                    ""id"": ""33fca22e-f077-4823-893e-21510eb78f34"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -186,6 +204,50 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveSelectionDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e165fbf9-0f81-45bd-9774-61aed387b2fa"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NewTrainCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b820e967-b8af-4068-bc83-2cb4f7a59966"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NewTrainCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8eb059e3-c0fb-4255-bb85-6dadf2d4a8dc"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DestroyTrainCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdab0f3b-2380-4c18-b0b2-0b70805c21a3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DestroyTrainCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,6 +259,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_PlayerControls_UseAbility = m_PlayerControls.FindAction("UseAbility", throwIfNotFound: true);
         m_PlayerControls_MoveSelectionUp = m_PlayerControls.FindAction("MoveSelectionUp", throwIfNotFound: true);
         m_PlayerControls_MoveSelectionDown = m_PlayerControls.FindAction("MoveSelectionDown", throwIfNotFound: true);
+        m_PlayerControls_NewTrainCar = m_PlayerControls.FindAction("NewTrainCar", throwIfNotFound: true);
+        m_PlayerControls_DestroyTrainCar = m_PlayerControls.FindAction("DestroyTrainCar", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -280,6 +344,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_UseAbility;
     private readonly InputAction m_PlayerControls_MoveSelectionUp;
     private readonly InputAction m_PlayerControls_MoveSelectionDown;
+    private readonly InputAction m_PlayerControls_NewTrainCar;
+    private readonly InputAction m_PlayerControls_DestroyTrainCar;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerControls".
     /// </summary>
@@ -303,6 +369,14 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerControls/MoveSelectionDown".
         /// </summary>
         public InputAction @MoveSelectionDown => m_Wrapper.m_PlayerControls_MoveSelectionDown;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/NewTrainCar".
+        /// </summary>
+        public InputAction @NewTrainCar => m_Wrapper.m_PlayerControls_NewTrainCar;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/DestroyTrainCar".
+        /// </summary>
+        public InputAction @DestroyTrainCar => m_Wrapper.m_PlayerControls_DestroyTrainCar;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -338,6 +412,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @MoveSelectionDown.started += instance.OnMoveSelectionDown;
             @MoveSelectionDown.performed += instance.OnMoveSelectionDown;
             @MoveSelectionDown.canceled += instance.OnMoveSelectionDown;
+            @NewTrainCar.started += instance.OnNewTrainCar;
+            @NewTrainCar.performed += instance.OnNewTrainCar;
+            @NewTrainCar.canceled += instance.OnNewTrainCar;
+            @DestroyTrainCar.started += instance.OnDestroyTrainCar;
+            @DestroyTrainCar.performed += instance.OnDestroyTrainCar;
+            @DestroyTrainCar.canceled += instance.OnDestroyTrainCar;
         }
 
         /// <summary>
@@ -358,6 +438,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @MoveSelectionDown.started -= instance.OnMoveSelectionDown;
             @MoveSelectionDown.performed -= instance.OnMoveSelectionDown;
             @MoveSelectionDown.canceled -= instance.OnMoveSelectionDown;
+            @NewTrainCar.started -= instance.OnNewTrainCar;
+            @NewTrainCar.performed -= instance.OnNewTrainCar;
+            @NewTrainCar.canceled -= instance.OnNewTrainCar;
+            @DestroyTrainCar.started -= instance.OnDestroyTrainCar;
+            @DestroyTrainCar.performed -= instance.OnDestroyTrainCar;
+            @DestroyTrainCar.canceled -= instance.OnDestroyTrainCar;
         }
 
         /// <summary>
@@ -419,5 +505,19 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveSelectionDown(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "NewTrainCar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNewTrainCar(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "DestroyTrainCar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDestroyTrainCar(InputAction.CallbackContext context);
     }
 }
