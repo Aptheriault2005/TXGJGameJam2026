@@ -36,9 +36,9 @@ public class EnemyExploder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PlaceholderTraincar>(out var component))
+        if (other.TryGetComponent<TrainCar>(out var component))
         {
-            component.Die();
+            component.GetComponent<HealthComponent>().Damage(1);
             Destroy(gameObject);
         }
        
