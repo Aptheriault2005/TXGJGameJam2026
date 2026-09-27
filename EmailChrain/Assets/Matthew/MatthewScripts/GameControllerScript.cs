@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Events;
 
 public class GameControllerScript : MonoBehaviour
 {
+    public UnityEvent WaveEndEvent;
+    public UnityEvent WaveStartEvent;
 
     public float levelTimer;
     public float maxLevelTime;
@@ -25,7 +28,6 @@ public class GameControllerScript : MonoBehaviour
     void Update()
     {
         levelTimer -= Time.deltaTime;
-
     }
 
     IEnumerator EndWaveDelay(float time) {
@@ -34,6 +36,8 @@ public class GameControllerScript : MonoBehaviour
     }
 
     void WaveEnd() {
+        WaveEndEvent.Invoke();
+
         if (waveCounter >= maxWave) {
             SceneManager.LoadScene("EndWinScreen");
         }
@@ -62,6 +66,9 @@ public class GameControllerScript : MonoBehaviour
         train.trainCars[0].SelectTrainCar();
         train.trainCars[0].DeselectTrainCar();
         train.trainCars[0].SelectTrainCar();
+
+        WaveStartEvent.Invoke();
+
         StartCoroutine(EndWaveDelay(maxLevelTime + 1.5f));
     }
 }

@@ -621,8 +621,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc9aa280674fc144a8eb7d913391fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  WaveEndEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 359307889}
+        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
+        m_MethodName: StopSpawner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  WaveStartEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 359307889}
+        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
+        m_MethodName: ResumeSpawner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   levelTimer: 0
-  maxLevelTime: 3
+  maxLevelTime: 15
   waveCounter: 0
   maxWave: 3
   usScreen: {fileID: 2059157554}
@@ -825,6 +855,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348304689}
   m_CullTransparentMesh: 1
+--- !u!114 &359307889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -9176632991985349303, guid: ff689616d1ad07d4aae01c00d69c2edd, type: 3}
+  m_PrefabInstance: {fileID: 1893946277}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5006387051f464459eaed30bc763418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
 --- !u!1 &404684049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1578,7 @@ MonoBehaviour:
   trainCars: []
   trainCarPrefab: {fileID: 1238334312049360247, guid: e15a7410504f110498cfdb537e18bb8c, type: 3}
   nextTrainCarPosition: {fileID: 1489220770}
+  currentIndex: 0
 --- !u!4 &1208295507
 Transform:
   m_ObjectHideFlags: 0
