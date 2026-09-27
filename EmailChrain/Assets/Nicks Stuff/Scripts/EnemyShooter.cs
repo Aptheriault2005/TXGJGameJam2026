@@ -28,7 +28,9 @@ public class EnemyShooter : MonoBehaviour
     private bool hovered = false;
     List<GameObject> validActors = new List<GameObject>();
 
-
+    float strafeDirection = 0;
+    float timer;
+    [SerializeField] float strafeTime;
     float rxAmount = 0;
     float rZAmount = 0;
     void Start()
@@ -43,7 +45,17 @@ public class EnemyShooter : MonoBehaviour
 
         InvokeRepeating("FireP", 1, FireRate);
 
-        StartCoroutine(Delay(2));
+
+        //Strafe
+        if (Random.Range(0, 2) == 0)
+        {
+            strafeDirection = -1;
+        }
+        else
+        {
+            strafeDirection = 1;
+        }
+        //
     }
 
     // Update is called once per frame
@@ -79,7 +91,7 @@ public class EnemyShooter : MonoBehaviour
             }
             //Switch code
 
-            // Bad hover code
+            /*// Bad hover code
 
 
             if (hovered == false)
@@ -107,31 +119,40 @@ public class EnemyShooter : MonoBehaviour
             }
 
 
-            // Bad hover code
+            // Bad hover code*/
 
 
-            // bad strafe 
+            // dumb strafe 
 
-            if (goingLeft)
+            timer += Time.deltaTime;
+            if (firstTime) 
             {
-                Vector3 offsetDir = Quaternion.Euler(0, 90, 0) * transform.forward;
-               // transform.position = offsetDir * sSpeed * Time.deltaTime;
+                if (timer >= strafeTime)
+                {
+                    
+                    strafeDirection *= -1;
+                    timer = 0;
+                    firstTime = false;
+                }
             }
             else
             {
-                Vector3 offsetDir = Quaternion.Euler(0, -90, 0) * transform.forward;
-                // transform.position = offsetDir * sSpeed * Time.deltaTime;
+                if (timer >= strafeTime)
+                {
+                    strafeDirection *= -1;
+                    timer = 0;
+                }
             }
-            
-            
+            Vector3 strafeDistance = transform.right * strafeDirection * sSpeed * Time.deltaTime;
+            transform.position += strafeDistance;
 
-
-
+            //
 
 
         }
         else
-        {
+        { 
+
             transform.position = Vector3.MoveTowards(transform.position, targetedCar.transform.position, (speed * Time.deltaTime));
             //Switch code
 
@@ -190,46 +211,6 @@ public class EnemyShooter : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         StopTime();
-    }
-
-    IEnumerator StrifeTime(float time)
-    {
-        if (firstTime)
-        {
-            if (Random.Range(0, 2) == 0)
-            {
-                goingLeft = false;
-            }
-            else
-            {
-                goingLeft = true;
-            }
-            firstTime = false;
-
-            yield return new WaitForSeconds(time/2);
-            if (goingLeft)
-            {
-                goingLeft = false;
-            }
-            else
-            {
-                goingLeft = true;
-            }
-        }
-        else
-        {
-            yield return new WaitForSeconds(time);
-            if (goingLeft)
-            {
-                goingLeft = false;
-            }
-            else
-            {
-                goingLeft = true;
-            }
-        }
-        
-        StartCoroutine(StrifeTime(time));
     }
 
     void StopTime()

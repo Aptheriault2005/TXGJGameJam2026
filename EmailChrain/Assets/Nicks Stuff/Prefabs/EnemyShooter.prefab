@@ -409,6 +409,9 @@ MonoBehaviour:
   healthComponent: {fileID: 5331338302431427893}
   EnemyP: {fileID: 1684074431928686395, guid: 332ee26a924db524f883053d4c4de51d, type: 3}
   FireRate: 2
+  sSpeed: 5
+  rSpeed: 4
+  strafeTime: 1
 --- !u!114 &6339573559465689866
 MonoBehaviour:
   m_ObjectHideFlags: 0
