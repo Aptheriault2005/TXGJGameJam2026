@@ -130,3 +130,4 @@ MonoBehaviour:
   targetedCar: {fileID: 7193142636783230477, guid: 03d3c4084718c794b894f7b91676052b, type: 3}
   EnemyP: {fileID: 1684074431928686395, guid: 332ee26a924db524f883053d4c4de51d, type: 3}
   FireRate: 2
+  rSpeed: 1
