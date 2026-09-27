@@ -4,9 +4,11 @@ using static UnityEngine.GraphicsBuffer;
 public class Turret : MonoBehaviour
 {
     [SerializeField] private GameObject turretPivot;
+    [SerializeField] private GameObject turretModelSpawnPos;
     [SerializeField] private GameObject bulletSpawnPoint;
     public TurretStats turretStats;
 
+    private GameObject turretModel = null;
     private ITrainCarAbility trainCarAbility;
     private bool isAbilityActive = false;
     private float timeSinceLastUse = float.MaxValue;
@@ -39,6 +41,15 @@ public class Turret : MonoBehaviour
     public void SetTurretAbility(TurretStats turretStats)
     {
         this.turretStats = turretStats;
+        if (turretModel == null)
+        {
+            turretModel = Instantiate(turretStats.TurretModelPrefab, turretModelSpawnPos.transform);
+        }
+        else
+        {
+            Destroy(turretModel);
+            turretModel = Instantiate(turretStats.TurretModelPrefab, turretModelSpawnPos.transform);
+        }
         trainCarAbility = new ProjectileAbility(turretStats.ProjectileStats, this);
     }
 

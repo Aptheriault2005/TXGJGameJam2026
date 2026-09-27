@@ -20,6 +20,12 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    public void FullHeal()
+    {
+        currentHealth = maxHealth;
+        OnHealthChanged?.Invoke();
+    }
+
     public void Kill()
     {
         currentHealth = 0;

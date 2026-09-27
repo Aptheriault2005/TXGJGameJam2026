@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Train : MonoBehaviour
 {
+    public const float TrainLength = 2f;
+
     [SerializeField] private LayerMask mouseTargetLayerMask;
     [SerializeField] private GameObject mousePositionIndicator;
     [SerializeField] private List<TurretStats> turretStatsList = new();
     [SerializeField] public List<TrainCar> trainCars = new ();
     [SerializeField] private GameObject trainCarPrefab;
+    [SerializeField] private GameObject trainCarFrontPrefab;
     [SerializeField] private GameObject nextTrainCarPosition;
 
     public int currentIndex = 0;
     private PlayerActions playerActions;
     private System.Random rng;
+    private List<GameObject> trainSections = new();
 
     private void Awake()
     {
@@ -25,8 +29,8 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.UseAbility.canceled += OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed += OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed += OnSelectionMoveDown;
-        playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
-        playerActions.PlayerControls.DestroyTrainCar.performed += OnDestroyTrainCar;
+        //playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
+        //playerActions.PlayerControls.DestroyTrainCar.performed += OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed += OnSelfDamage;
     }
 
@@ -36,8 +40,8 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.UseAbility.canceled -= OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed -= OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed -= OnSelectionMoveDown;
-        playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
-        playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
+        //playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
+        //playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed -= OnSelfDamage;
         playerActions.PlayerControls.Disable();
         playerActions.Dispose();
@@ -45,9 +49,8 @@ public class Train : MonoBehaviour
 
     private void Start()
     {
+        AddFrontTrainCar();
         AddTrainCar(turretStatsList[rng.Next(0, turretStatsList.Count)]);
-        //AddTrainCar();
-        //AddTrainCar();
 
         currentIndex = 0;
         GetCurrentTrainCar().SelectTrainCar();
@@ -110,6 +113,15 @@ public class Train : MonoBehaviour
         return trainCars[currentIndex];
     }
 
+    public void AddFrontTrainCar()
+    {
+        GameObject newCar = Instantiate(trainCarFrontPrefab, transform);
+        newCar.transform.position = nextTrainCarPosition.transform.position;
+        nextTrainCarPosition.transform.position += new Vector3(0, 0, -2.1f);
+        trainSections.Add(newCar);
+        UpdateCameraPosition();
+    }
+
     public void AddTrainCar(TurretStats turretStats) 
     {
         GameObject newCar = Instantiate(trainCarPrefab, transform);
@@ -118,6 +130,7 @@ public class Train : MonoBehaviour
         trainCar.DeselectTrainCar();
         trainCar.SetTrainAbility(turretStats);
         trainCars.Add(trainCar);
+        trainSections.Add(newCar);
         nextTrainCarPosition.transform.position += new Vector3(0, 0, -2.1f);
         UpdateCameraPosition();
 
@@ -179,10 +192,10 @@ public class Train : MonoBehaviour
 
     private void UpdateCameraPosition()
     {
-        if (trainCars.Count > 0)
+        if (trainSections.Count > 0)
         {
-            Vector3 MidCarPos = trainCars[trainCars.Count / 2].transform.position;
-            Camera.main.transform.position = new Vector3 (MidCarPos.x, 5 + (trainCars.Count * 2), MidCarPos.z);
+            Vector3 MidCarPos = trainSections[trainSections.Count / 2].transform.position;
+            Camera.main.transform.position = new Vector3 (MidCarPos.x, 5 + (trainSections.Count * TrainLength), MidCarPos.z);
         }
     }
 

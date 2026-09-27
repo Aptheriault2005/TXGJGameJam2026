@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TurretStats", menuName = "Scriptable Objects/TurretStats")]
 public class TurretStats : ScriptableObject
 {
+    public GameObject TurretModelPrefab;
     public string Name;
     public ProjectileStats ProjectileStats;
     public float FireRate;

@@ -1563,10 +1563,12 @@ MonoBehaviour:
     m_Bits: 8
   mousePositionIndicator: {fileID: 1688676747}
   turretStatsList:
-  - {fileID: 11400000, guid: 4e1a3b05014ba7349b358bef039267ee, type: 2}
-  - {fileID: 11400000, guid: 585468407981437488fcb869d18863e6, type: 2}
+  - {fileID: 11400000, guid: 3cdb97c92db099543b9b8d57647a19ee, type: 2}
+  - {fileID: 11400000, guid: 163c8ac03aee64b42a52a372913079f5, type: 2}
+  - {fileID: 11400000, guid: 223813edbacda1c4da2340117fe1c731, type: 2}
   trainCars: []
   trainCarPrefab: {fileID: 1238334312049360247, guid: e15a7410504f110498cfdb537e18bb8c, type: 3}
+  trainCarFrontPrefab: {fileID: 1238334312049360247, guid: c88549ef538c09040bb9b5dfc2bd8fdd, type: 3}
   nextTrainCarPosition: {fileID: 1489220770}
   currentIndex: 0
 --- !u!4 &1208295507
