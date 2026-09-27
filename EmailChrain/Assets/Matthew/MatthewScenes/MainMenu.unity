@@ -425,6 +425,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 166481906123660016, guid: b7f694c8384329f49b4669383624af6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740056978498827271, guid: b7f694c8384329f49b4669383624af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919149545241709786, guid: b7f694c8384329f49b4669383624af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089726248080027753, guid: b7f694c8384329f49b4669383624af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2256090507835002364, guid: b7f694c8384329f49b4669383624af6e, type: 3}
       propertyPath: m_Name
       value: Menus
