@@ -25,6 +25,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.MoveSelectionDown.performed += OnSelectionMoveDown;
         playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
         playerActions.PlayerControls.DestroyTrainCar.performed += OnDestroyTrainCar;
+        playerActions.PlayerControls.SelfDamage.performed += OnSelfDamage;
     }
 
     private void OnDestroy()
@@ -35,6 +36,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.MoveSelectionDown.performed -= OnSelectionMoveDown;
         playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
         playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
+        playerActions.PlayerControls.SelfDamage.performed -= OnSelfDamage;
         playerActions.Dispose();
     }
 
@@ -171,5 +173,9 @@ public class Train : MonoBehaviour
             Vector3 MidCarPos = trainCars[trainCars.Count / 2].transform.position;
             Camera.main.transform.position = new Vector3 (MidCarPos.x, 5 + (trainCars.Count * 2), MidCarPos.z);
         }
+    }
+
+    private void OnSelfDamage(InputAction.CallbackContext context) {
+        GetCurrentTrainCar().GetComponent<HealthComponent>().Damage(1);
     }
 }
