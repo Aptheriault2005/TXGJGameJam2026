@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Train : MonoBehaviour
 {
@@ -177,5 +178,16 @@ public class Train : MonoBehaviour
 
     private void OnSelfDamage(InputAction.CallbackContext context) {
         GetCurrentTrainCar().GetComponent<HealthComponent>().Damage(1);
+    }
+
+    public void CheckAllDead() {
+        foreach(TrainCar t in trainCars) {
+            if (t.GetComponent<HealthComponent>().currentHealth > 0) {
+                print("alive");
+                return;
+            }
+        }
+        playerActions.PlayerControls.Disable();
+        SceneManager.LoadScene("EndLoseScreen");
     }
 }

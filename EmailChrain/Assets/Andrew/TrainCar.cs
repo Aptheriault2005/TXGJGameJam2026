@@ -50,5 +50,11 @@ public class TrainCar : MonoBehaviour
         selectionIndicator.SetActive(false);
         turret.StopTurretAbility();
     }
+
+    public void CheckDead() {
+        print("checking dead");
+        Train t = transform.parent.GetComponent<Train>();
+        t.CheckAllDead();
+    }
 }
 

@@ -13,7 +13,7 @@ public class HealthComponent : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         OnHealthChanged.Invoke();
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             OnDeath.Invoke();
         }
