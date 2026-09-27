@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9216611537543396178}
         m_TargetAssemblyTypeName: TrainCar, Assembly-CSharp
-        m_MethodName: OnDeath
+        m_MethodName: DisableTrainCar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
