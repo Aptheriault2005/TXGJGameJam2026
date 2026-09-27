@@ -18,25 +18,43 @@ public class EnemySpawner : MonoBehaviour
 
     double xdistance;
 
+    private bool isPaused = false;
+
 
     bool leftSpawn = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
         InvokeRepeating("SpawnEnemy", 0, SpawnRate);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StopSpawner()
     {
-        
+        Debug.Log("PAUSED");
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
+        { 
+            if (enemy.TryGetComponent<HealthComponent>(out var health))
+            {
+                health.Kill();
+            }
+            else
+            {
+                Destroy(enemy);
+            }
+        }
+
+        isPaused = true;
+    }
+
+    public void ResumeSpawner()
+    {
+        Debug.Log("RESUME");
+        isPaused = false;
     }
 
     void SpawnEnemy()
     {
-
+        if (isPaused) return;
 
 
         xdistance = (Camera.main.transform.position.y / Math.Sin(Mathf.Deg2Rad * 37.875)) * Math.Sin(Mathf.Deg2Rad * 52.125);
@@ -57,7 +75,6 @@ public class EnemySpawner : MonoBehaviour
         {
             leftSpawn = false;
             xdistance += 1;
-
         }
         
         Debug.Log(new Vector3((float)xdistance, 0, randz));
@@ -65,13 +82,11 @@ public class EnemySpawner : MonoBehaviour
         int randEnemy = UnityEngine.Random.Range(0, 3);
         if (randEnemy == 1)
         {
-            Instantiate(exploderPrefab, new Vector3((float)xdistance, 0, randz), Quaternion.identity);
+            GameObject exploder = Instantiate(exploderPrefab, new Vector3((float)xdistance, 0, randz), Quaternion.identity);
         }
         else if (randEnemy == 0)
         {
-            Instantiate(shooterPrefab, new Vector3((float)xdistance, 0, randz), Quaternion.identity);
+            GameObject shooter = Instantiate(shooterPrefab, new Vector3((float)xdistance, 0, randz), Quaternion.identity);
         }
-
     }
-
 }

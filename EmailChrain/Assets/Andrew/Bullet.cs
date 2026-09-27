@@ -1,19 +1,21 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+public class Bullet : Projectile
 {
     public BulletStats stats;
+    private int pierceCount = 0;
 
-    public void Shoot(BulletStats bulletStats)
+    public override void Shoot()
     {
-        stats = bulletStats;
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = transform.forward * bulletStats.BulletSpeed;
-        StartCoroutine(DestroyAfterTime(bulletStats.Lifetime));
+        rb.linearVelocity = transform.forward * stats.BulletSpeed;
+        StartCoroutine(DestroyAfterTime(stats.Lifetime));
+    }
+
+    public override float GetDamage()
+    {
+        return stats.BulletDamage;
     }
 
     IEnumerator DestroyAfterTime(float time)
@@ -22,16 +24,32 @@ public class Bullet : MonoBehaviour
         DestroyEffect();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    IEnumerator DisableInvAfter(float time)
     {
-        DestroyEffect();
+        yield return new WaitForSeconds(time);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log($"{gameObject} collides with {other.gameObject}");
+        if (other.gameObject.tag == "enemy")
+        {
+            if (pierceCount < stats.BulletPierceCount)
+            {
+                pierceCount++;
+            }
+            else
+            {
+                DestroyEffect();
+            }
+        }
     }
 
     public void DestroyEffect()
     {
         if (stats.DestroyEffect != null)
         {
-            stats.DestroyEffect.Activate(this);
+            stats.DestroyEffect.Activate(transform.position);
         }
 
         Destroy(gameObject);

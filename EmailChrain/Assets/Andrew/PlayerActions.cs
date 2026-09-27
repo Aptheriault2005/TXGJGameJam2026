@@ -136,6 +136,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelfDamage"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d485b83-9a66-47ae-9933-04cb895c75f1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -248,6 +257,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""DestroyTrainCar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebb3a563-5152-43c6-9073-4376c6d5d656"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelfDamage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -261,6 +281,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_PlayerControls_MoveSelectionDown = m_PlayerControls.FindAction("MoveSelectionDown", throwIfNotFound: true);
         m_PlayerControls_NewTrainCar = m_PlayerControls.FindAction("NewTrainCar", throwIfNotFound: true);
         m_PlayerControls_DestroyTrainCar = m_PlayerControls.FindAction("DestroyTrainCar", throwIfNotFound: true);
+        m_PlayerControls_SelfDamage = m_PlayerControls.FindAction("SelfDamage", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -346,6 +367,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_MoveSelectionDown;
     private readonly InputAction m_PlayerControls_NewTrainCar;
     private readonly InputAction m_PlayerControls_DestroyTrainCar;
+    private readonly InputAction m_PlayerControls_SelfDamage;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerControls".
     /// </summary>
@@ -377,6 +399,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerControls/DestroyTrainCar".
         /// </summary>
         public InputAction @DestroyTrainCar => m_Wrapper.m_PlayerControls_DestroyTrainCar;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/SelfDamage".
+        /// </summary>
+        public InputAction @SelfDamage => m_Wrapper.m_PlayerControls_SelfDamage;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -418,6 +444,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @DestroyTrainCar.started += instance.OnDestroyTrainCar;
             @DestroyTrainCar.performed += instance.OnDestroyTrainCar;
             @DestroyTrainCar.canceled += instance.OnDestroyTrainCar;
+            @SelfDamage.started += instance.OnSelfDamage;
+            @SelfDamage.performed += instance.OnSelfDamage;
+            @SelfDamage.canceled += instance.OnSelfDamage;
         }
 
         /// <summary>
@@ -444,6 +473,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @DestroyTrainCar.started -= instance.OnDestroyTrainCar;
             @DestroyTrainCar.performed -= instance.OnDestroyTrainCar;
             @DestroyTrainCar.canceled -= instance.OnDestroyTrainCar;
+            @SelfDamage.started -= instance.OnSelfDamage;
+            @SelfDamage.performed -= instance.OnSelfDamage;
+            @SelfDamage.canceled -= instance.OnSelfDamage;
         }
 
         /// <summary>
@@ -519,5 +551,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDestroyTrainCar(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelfDamage" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelfDamage(InputAction.CallbackContext context);
     }
 }

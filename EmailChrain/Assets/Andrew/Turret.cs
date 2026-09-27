@@ -1,11 +1,14 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Turret : MonoBehaviour
 {
     [SerializeField] private GameObject turretPivot;
+    [SerializeField] private GameObject turretModelSpawnPos;
     [SerializeField] private GameObject bulletSpawnPoint;
-    [SerializeField] private TurretStats turretStats;
+    public TurretStats turretStats;
 
+    private GameObject turretModel = null;
     private ITrainCarAbility trainCarAbility;
     private bool isAbilityActive = false;
     private float timeSinceLastUse = float.MaxValue;
@@ -14,7 +17,9 @@ public class Turret : MonoBehaviour
     void Awake()
     {
         rng = new();
-        trainCarAbility = new MachineGunAbility(turretStats.BulletStats, this);
+
+        turretStats = turretStats.Copy();
+        trainCarAbility = new ProjectileAbility(turretStats.ProjectileStats, this);
     }
 
     private void Update()
@@ -27,10 +32,25 @@ public class Turret : MonoBehaviour
             {
                 timeSinceLastUse = 0;
                 bulletSpawnPoint.transform.localRotation = Quaternion.identity;
-                bulletSpawnPoint.transform.Rotate(0f, (float)rng.Next(-turretStats.BulletSpray, turretStats.BulletSpray), 0f);
+                bulletSpawnPoint.transform.Rotate(0f, (float)rng.Next(-turretStats.ProjectileSpray, turretStats.ProjectileSpray), 0f);
                 trainCarAbility.UseAbility();
             }
         }
+    }
+
+    public void SetTurretAbility(TurretStats turretStats)
+    {
+        this.turretStats = turretStats;
+        if (turretModel == null)
+        {
+            turretModel = Instantiate(turretStats.TurretModelPrefab, turretModelSpawnPos.transform);
+        }
+        else
+        {
+            Destroy(turretModel);
+            turretModel = Instantiate(turretStats.TurretModelPrefab, turretModelSpawnPos.transform);
+        }
+        trainCarAbility = new ProjectileAbility(turretStats.ProjectileStats, this);
     }
 
     public void StartTurretAbility()
@@ -51,7 +71,7 @@ public class Turret : MonoBehaviour
 
     public GameObject GetProjectilePrefab()
     {
-        return turretStats.BulletStats.Prefab;
+        return turretStats.ProjectileStats.Prefab;
     }
 
     public GameObject GetProjectileSpawnPoint() 
@@ -65,23 +85,40 @@ public interface ITrainCarAbility
     public void UseAbility();
 }
 
-public class MachineGunAbility : ITrainCarAbility
+public class ProjectileAbility : ITrainCarAbility
 {
     public Turret Turret;
-    public BulletStats BulletStats;
+    public ProjectileStats ProjectileStats;
 
-    public MachineGunAbility(BulletStats bulletStats, Turret turret)
+    public ProjectileAbility(ProjectileStats projectileStats, Turret turret)
     {
-        BulletStats = bulletStats;
         Turret = turret;
+        ProjectileStats = projectileStats;
     }
 
     public void UseAbility()
     {
-        Debug.Log($"{Turret.gameObject.name} train car abilty used");
-        GameObject bullet = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
-        bullet.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
-        bullet.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
-        bullet.GetComponent<Bullet>().Shoot(BulletStats);
+        //Debug.Log($"{Turret.gameObject.name} train car abilty used");
+        GameObject projectile = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
+        projectile.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
+        projectile.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
+
+        projectile.GetComponent<Projectile>().ShootProjectile(projectile, ProjectileStats);
+
+        //if (ProjectileStats is BulletStats bulletStats)
+        //{
+        //    projectile.GetComponent<Bullet>().stats = bulletStats;
+        //    projectile.GetComponent<Bullet>().Shoot();
+        //}
+        //else if (ProjectileStats is MissileStats missileStats)
+        //{
+        //    projectile.GetComponent<Missile>().stats = missileStats;
+        //    projectile.GetComponent<Missile>().Shoot();
+        //}
+        //else if (ProjectileStats is ElectricChargeStats electricChargeStats)
+        //{
+        //    projectile.GetComponent<ElectricCharge>().stats = electricChargeStats;
+        //    projectile.GetComponent <ElectricCharge>().Shoot();
+        //}
     }
 }

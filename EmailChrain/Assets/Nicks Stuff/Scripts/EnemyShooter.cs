@@ -12,8 +12,9 @@ public class EnemyShooter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     [SerializeField] float speed = 10f;
-    [SerializeField] float health = 10f;
+    //[SerializeField] float health = 10f;
     [SerializeField] GameObject targetedCar;
+    [SerializeField] HealthComponent healthComponent;
 
     [SerializeField] GameObject EnemyP;
     [SerializeField] float FireRate = 2;
@@ -163,16 +164,20 @@ public class EnemyShooter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PlaceholderTraincar>(out var component))
+        //if (other.TryGetComponent<PlaceholderTraincar>(out var component))
+        //{
+        //    component.Die();
+        //    Destroy(this.gameObject);
+        //}
+        if (other.TryGetComponent<TrainCar>(out var component))
         {
-            component.Die();   
-            Destroy(this.gameObject);
-            Debug.Log("HIT");
+            component.GetComponent<HealthComponent>().Damage(1);
+            healthComponent.Kill();
         }
-        if (other.gameObject.tag == "Laser")
-        {
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
+        if (other.TryGetComponent<Projectile>(out var comp2)) {
+            healthComponent.Damage(comp2.GetDamage());
+            //Destroy(other.gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -233,7 +238,10 @@ public class EnemyShooter : MonoBehaviour
         Debug.Log(stopped);
     }
 
-
+    public void OnDeath()
+    {
+        Destroy(gameObject);
+    }
 }
 
 

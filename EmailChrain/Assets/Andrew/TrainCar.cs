@@ -4,20 +4,28 @@ using UnityEngine;
 public class TrainCar : MonoBehaviour
 {
     [SerializeField] private GameObject selectionIndicator;
-    [SerializeField] private Turret turret;
+    public Turret turret;
 
-    private bool isSelected = false;
+    private bool isDisabled = false;
+    public bool isSelected = false;
 
     public void MousePositionUpdate(GameObject mousePosIndicator)
     {
-        if (isSelected)
+        if (isSelected && !isDisabled)
         {
             turret.MoveTurret(mousePosIndicator.transform);
         }
     }
 
+    public void SetTrainAbility(TurretStats turretStats)
+    {
+        turret.SetTurretAbility(turretStats);
+    }
+
     public void UseTrainCarAbility()
     {
+        if (!isSelected || isDisabled) return;
+
         turret.StartTurretAbility();
     }
 
@@ -25,6 +33,17 @@ public class TrainCar : MonoBehaviour
     {
         turret.StopTurretAbility();
     }
+
+    public void ReviveTrainCar()
+    {
+        isDisabled = false;
+        if (TryGetComponent<HealthComponent>(out var health))
+        {
+            health.FullHeal();
+        }
+    }
+
+    public void DisableTrainCar() { isDisabled = true; }
 
     public void SelectTrainCar() 
     {
@@ -38,28 +57,11 @@ public class TrainCar : MonoBehaviour
         selectionIndicator.SetActive(false);
         turret.StopTurretAbility();
     }
+
+    public void CheckDead() {
+        print("checking dead");
+        Train t = transform.parent.GetComponent<Train>();
+        t.CheckAllDead();
+    }
 }
 
-//public interface ITrainCarAbility
-//{
-//    public void UseAbility(TrainCar trainCar);
-//}
-
-//public class MachineGunAbility : ITrainCarAbility
-//{
-//    BulletStats BulletStats;
-
-//    public MachineGunAbility(BulletStats bulletStats)
-//    {
-//        BulletStats = bulletStats;
-//    }
-
-//    public void UseAbility(TrainCar trainCar)
-//    {
-//        Debug.Log($"{trainCar.gameObject.name} train car abilty used");
-//        GameObject bullet = ProjectilesSingleton.instance.Spawn(trainCar.GetProjectilePrefab());
-//        bullet.gameObject.transform.position = trainCar.GetProjectileSpawnPoint().transform.position;
-//        bullet.gameObject.transform.rotation = trainCar.GetProjectileSpawnPoint().transform.rotation;
-//        bullet.GetComponent<Bullet>().Shoot(BulletStats);
-//    }
-//}

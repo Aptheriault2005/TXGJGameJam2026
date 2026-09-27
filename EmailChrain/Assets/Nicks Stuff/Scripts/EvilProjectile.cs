@@ -19,15 +19,14 @@ public class EvilProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PlaceholderTraincar>(out var component))
+        if (other.TryGetComponent<TrainCar>(out var component))
         {
-            component.Die();   // damage the train
+            component.GetComponent<HealthComponent>().Damage(1);   // damage the train
             Destroy(gameObject);
         }
-        if (other.gameObject.tag == "Laser")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
+        //if (other.TryGetComponent<Projectile>(out var component)) {
+        //    Destroy(other.gameObject);
+        //    Destroy(gameObject);
+        //}
     }
 }

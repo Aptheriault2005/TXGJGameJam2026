@@ -12,11 +12,23 @@ EditorBuildSettings:
     path: Assets/Matthew/MatthewScenes/UpgradeScreen.unity
     guid: 641d5645d71b6744a91008a97e000960
   - enabled: 1
-    path: Assets/Matthew/MatthewScenes/EndScreen.unity
-    guid: a1486831627fc9d43939f5834db4a52a
-  - enabled: 1
-    path: Assets/Matthew/MainScene.unity
+    path: Assets/Matthew/MatthewScenes/MainScene.unity
     guid: 364867a244abd5445a378b4503a43ff6
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/EndWinScreen.unity
+    guid: 715dd06ee4711ae42a65400f4e866dc9
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/EndLoseScreen.unity
+    guid: e979f86e9b4980a499c21985d06df1d6
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/SettingsScreen.unity
+    guid: 54d62173c59ecbc4f828a684983af548
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/ControlsSettings.unity
+    guid: deab6ceab75e3434fa9210d0ee4ff202
+  - enabled: 1
+    path: Assets/Matthew/MatthewScenes/VolumeSettings.unity
+    guid: 1129810e8f6fb4a46bdb20fa9e7104d7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

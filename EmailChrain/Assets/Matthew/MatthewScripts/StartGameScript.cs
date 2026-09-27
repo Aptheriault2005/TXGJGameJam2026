@@ -17,6 +17,6 @@ public class StartGameScript : MonoBehaviour
 
     public void OnClick() {
         SceneManager.LoadScene("MainScene");
-;    }
+    }
 
 }

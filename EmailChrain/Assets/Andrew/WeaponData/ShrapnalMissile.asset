@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58ae1a26f01fbb42ac2f1146fa67b0b, type: 3}
+  m_Name: ShrapnalMissile
+  m_EditorClassIdentifier: Assembly-CSharp::MissileStats
+  Prefab: {fileID: 6250554593722900600, guid: 2f218f127c3b2a7418c93e76746d0fef, type: 3}
+  DestroyEffect: {fileID: 11400000, guid: eb07af1c89520a54a9275ad95e03aac4, type: 2}
+  MissileDamage: 5
+  MissileSpeed: 10
+  HomingStrength: 45
+  ArmingTime: 0.5
+  Lifetime: 2

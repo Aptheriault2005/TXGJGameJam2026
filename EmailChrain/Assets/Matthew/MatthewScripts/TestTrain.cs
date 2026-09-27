@@ -6,7 +6,7 @@ public class TestTrain : MonoBehaviour
 
     private float maxHp;
     private float health;
-    private TrainHealthScript ths;
+    private HealthBarScript ths;
     InputAction jumpAction;
 
 
@@ -15,7 +15,7 @@ public class TestTrain : MonoBehaviour
     {
         maxHp = 50;
         health = maxHp;
-        ths = GetComponent<TrainHealthScript>();
+        ths = GetComponent<HealthBarScript>();
         jumpAction = InputSystem.actions.FindAction("Jump");
     }
 
@@ -29,7 +29,7 @@ public class TestTrain : MonoBehaviour
 
     void Damaged(float dmg) {
         health -= dmg;
-        ths.UpdateHealth(health, maxHp);
+        //ths.UpdateHealth(health, maxHp);
         if (this.health <= 0) {
             this.Dead();
         }
