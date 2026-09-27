@@ -14,6 +14,7 @@ public class Train : MonoBehaviour
     [SerializeField] private GameObject trainCarPrefab;
     [SerializeField] private GameObject trainCarFrontPrefab;
     [SerializeField] private GameObject nextTrainCarPosition;
+    [SerializeField] GameControllerScript gcs;
 
     public int currentIndex = 0;
     private PlayerActions playerActions;
@@ -32,6 +33,7 @@ public class Train : MonoBehaviour
         //playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
         //playerActions.PlayerControls.DestroyTrainCar.performed += OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed += OnSelfDamage;
+        playerActions.PlayerControls.Pause.performed += OnPause;
     }
 
     private void OnDestroy()
@@ -43,6 +45,7 @@ public class Train : MonoBehaviour
         //playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
         //playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed -= OnSelfDamage;
+        playerActions.PlayerControls.Pause.performed -= OnPause;
         playerActions.PlayerControls.Disable();
         playerActions.Dispose();
     }
@@ -212,5 +215,9 @@ public class Train : MonoBehaviour
         }
         playerActions.PlayerControls.Disable();
         SceneManager.LoadScene("EndLoseScreen");
+    }
+
+    private void OnPause(InputAction.CallbackContext context) {
+        Application.Quit();
     }
 }
