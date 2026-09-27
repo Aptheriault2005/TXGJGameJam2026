@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlaceholderTraincar : MonoBehaviour
 {
-
-    bool dead = false;
+    float deathmarch = 10;
+    public bool dead = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +18,12 @@ public class PlaceholderTraincar : MonoBehaviour
 
     public void Die()
     {
-        dead = true;
+        deathmarch -= 1;
+        if (deathmarch <= 0)
+        {
+            dead = true;
+        }
+        
     }
 
 }
