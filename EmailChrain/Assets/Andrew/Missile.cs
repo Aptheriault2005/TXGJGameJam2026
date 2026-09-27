@@ -36,7 +36,7 @@ public class Missile : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        DestroyEffect();
+        //DestroyEffect();
     }
 
     public void DestroyEffect()

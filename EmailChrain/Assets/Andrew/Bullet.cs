@@ -23,7 +23,7 @@ public class Bullet : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        DestroyEffect();
+        //DestroyEffect();
     }
 
     public void DestroyEffect()
