@@ -623,40 +623,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   WaveEndEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 46739043525205740}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: StopSpawner
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   WaveStartEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 46739043525205740}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: ResumeSpawner
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   levelTimer: 0
   maxLevelTime: 15
   waveCounter: 0
-  maxWave: 10
-  usScreen: {fileID: 2059157554}
-  train: {fileID: 1208295506}
+  maxWave: 0
+  usScreen: {fileID: 0}
+  train: {fileID: 0}
 --- !u!4 &168262697
 Transform:
   m_ObjectHideFlags: 0
@@ -1560,15 +1536,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   mouseTargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   mousePositionIndicator: {fileID: 1688676747}
-  turretStatsList:
-  - {fileID: 11400000, guid: 3cdb97c92db099543b9b8d57647a19ee, type: 2}
-  - {fileID: 11400000, guid: 163c8ac03aee64b42a52a372913079f5, type: 2}
-  - {fileID: 11400000, guid: 223813edbacda1c4da2340117fe1c731, type: 2}
+  turretStatsList: []
   trainCars: []
   trainCarPrefab: {fileID: 1238334312049360247, guid: e15a7410504f110498cfdb537e18bb8c, type: 3}
-  trainCarFrontPrefab: {fileID: 1238334312049360247, guid: c88549ef538c09040bb9b5dfc2bd8fdd, type: 3}
+  trainCarFrontPrefab: {fileID: 0}
   nextTrainCarPosition: {fileID: 1489220770}
   currentIndex: 0
 --- !u!4 &1208295507
@@ -2602,6 +2575,7 @@ MonoBehaviour:
   SpawnRate: 0.5
   exploderPrefab: {fileID: 6862359924816104899, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
   shooterPrefab: {fileID: 5171027077973475604, guid: d9ff7b14066919d428de73a2fab6893d, type: 3}
+  groupPercent: 0
 --- !u!4 &2358537943886340410
 Transform:
   m_ObjectHideFlags: 0
