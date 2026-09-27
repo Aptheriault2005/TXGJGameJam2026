@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartGameScript : MonoBehaviour
+public class SettingsButton : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +16,8 @@ public class StartGameScript : MonoBehaviour
     }
 
     public void OnClick() {
-        SceneManager.LoadScene("MainScene");
+        PrevSceneScript.prevScenes.Push(transform.parent.gameObject.name);
+        transform.parent.gameObject.transform.parent.gameObject.transform.Find("SettingsMenu").gameObject.SetActive(true);
+        transform.parent.gameObject.SetActive(false);
     }
-
 }
