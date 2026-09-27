@@ -413,6 +413,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyExploder
       objectReference: {fileID: 0}
+    - target: {fileID: 7184157887400454223, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184157887400454223, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -473,6 +481,14 @@ PrefabInstance:
     - target: {fileID: 6862359924816104899, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
       propertyPath: m_Name
       value: EnemyExploder (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184157887400454223, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184157887400454223, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -736,10 +752,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea0f83d23dc3ef4c942f9ea8ba2b82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  mouseTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   mousePositionIndicator: {fileID: 149391665}
+  turretStatsList: []
   trainCars: []
   trainCarPrefab: {fileID: 1238334312049360247, guid: e15a7410504f110498cfdb537e18bb8c, type: 3}
+  trainCarFrontPrefab: {fileID: 1238334312049360247, guid: c88549ef538c09040bb9b5dfc2bd8fdd, type: 3}
   nextTrainCarPosition: {fileID: 125318287}
+  currentIndex: 0
 --- !u!4 &1680544769
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,6 +1105,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9176632991985349303, guid: ff689616d1ad07d4aae01c00d69c2edd, type: 3}
+      propertyPath: groupPercent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -9176632991985349303, guid: ff689616d1ad07d4aae01c00d69c2edd, type: 3}
       propertyPath: shooterPrefab
       value: 
