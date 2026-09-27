@@ -42,7 +42,7 @@ public class EnemyExploder : MonoBehaviour
             Destroy(gameObject);
         }
        
-        if (other.TryGetComponent<Bullet>(out var comp2)) {
+        if (other.TryGetComponent<Projectile>(out var comp2)) {
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
