@@ -40,6 +40,7 @@ public class GameControllerScript : MonoBehaviour
         else {
             foreach(TrainCar t in train.trainCars) {
                 t.DeselectTrainCar();
+                t.EnableTrainCar();
             }
             usScreen.Displayed();
         }

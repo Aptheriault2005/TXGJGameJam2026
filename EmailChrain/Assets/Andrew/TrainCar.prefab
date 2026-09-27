@@ -66,7 +66,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9216611537543396178}
         m_TargetAssemblyTypeName: TrainCar, Assembly-CSharp
-        m_MethodName: OnDeath
+        m_MethodName: DisableTrainCar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -76,6 +76,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 10
   currentHealth: 10
 --- !u!1 &2524611204061647884

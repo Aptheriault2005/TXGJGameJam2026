@@ -6,11 +6,12 @@ public class TrainCar : MonoBehaviour
     [SerializeField] private GameObject selectionIndicator;
     public Turret turret;
 
+    private bool isDisabled = false;
     private bool isSelected = false;
 
     public void MousePositionUpdate(GameObject mousePosIndicator)
     {
-        if (isSelected)
+        if (isSelected && !isDisabled)
         {
             turret.MoveTurret(mousePosIndicator.transform);
         }
@@ -23,7 +24,7 @@ public class TrainCar : MonoBehaviour
 
     public void UseTrainCarAbility()
     {
-        if (!isSelected) return;
+        if (!isSelected || isDisabled) return;
 
         turret.StartTurretAbility();
     }
@@ -32,6 +33,10 @@ public class TrainCar : MonoBehaviour
     {
         turret.StopTurretAbility();
     }
+
+    public void DisableTrainCar() { isDisabled = true; }
+
+    public void EnableTrainCar() { isDisabled = false; }
 
     public void SelectTrainCar() 
     {
@@ -44,11 +49,6 @@ public class TrainCar : MonoBehaviour
         isSelected = false;
         selectionIndicator.SetActive(false);
         turret.StopTurretAbility();
-    }
-
-    public void OnDeath()
-    {
-        Debug.Log("Death");
     }
 }
 
