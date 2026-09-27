@@ -3,7 +3,6 @@ using System.Collections;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Bullet : Projectile
 {
     public BulletStats stats;
@@ -28,7 +27,7 @@ public class Bullet : Projectile
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"{gameObject} collides with {other.gameObject}");
+        //Debug.Log($"{gameObject} collides with {other.gameObject}");
         if (other.gameObject.tag == "enemy")
         {
             DestroyEffect();

@@ -91,7 +91,7 @@ public class ProjectileAbility : ITrainCarAbility
         GameObject projectile = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
         projectile.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
         projectile.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;
-        
+
         if (ProjectileStats is BulletStats bulletStats)
         {
             projectile.GetComponent<Bullet>().stats = bulletStats;
@@ -101,6 +101,11 @@ public class ProjectileAbility : ITrainCarAbility
         {
             projectile.GetComponent<Missile>().stats = missileStats;
             projectile.GetComponent<Missile>().Shoot();
+        }
+        else if (ProjectileStats is ElectricChargeStats electricChargeStats)
+        {
+            projectile.GetComponent<ElectricCharge>().stats = electricChargeStats;
+            projectile.GetComponent <ElectricCharge>().Shoot();
         }
     }
 }
