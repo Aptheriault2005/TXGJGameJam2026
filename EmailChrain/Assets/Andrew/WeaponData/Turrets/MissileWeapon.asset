@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f37891dfbb293747aa80eb50c1f85ea, type: 3}
   m_Name: MissileWeapon
   m_EditorClassIdentifier: Assembly-CSharp::TurretStats
-  Name: Missile Weapon
+  Name: Basic Missiles
   ProjectileStats: {fileID: 11400000, guid: 7460cb35130c3e347bbefe429ade7cfc, type: 2}
   FireRate: 0.5
   ProjectileSpray: 0
+  UpgradePaths:
+  - {fileID: 11400000, guid: ae65eec89b0ec4e45bb9ff47ea9e9b48, type: 2}
+  - {fileID: 11400000, guid: 4e1a3b05014ba7349b358bef039267ee, type: 2}
+  - {fileID: 11400000, guid: 1abe3fbd9aa4d784aa9003e4804bb143, type: 2}

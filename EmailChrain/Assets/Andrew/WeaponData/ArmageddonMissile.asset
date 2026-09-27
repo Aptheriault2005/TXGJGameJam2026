@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d58ae1a26f01fbb42ac2f1146fa67b0b, type: 3}
-  m_Name: BasicMissile
+  m_Name: ArmageddonMissile
   m_EditorClassIdentifier: Assembly-CSharp::MissileStats
-  Prefab: {fileID: 6250554593722900600, guid: cede206ab760dbc4f8b5a629ba456eda, type: 3}
-  DestroyEffect: {fileID: 0}
-  MissileDamage: 25
-  MissileSpeed: 10
-  HomingStrength: 45
-  ArmingTime: 0.5
+  Prefab: {fileID: 6250554593722900600, guid: 27f90b95589c8a846a88d59446048bfd, type: 3}
+  DestroyEffect: {fileID: 11400000, guid: 05401a2102922e7489e9be1f730d9237, type: 2}
+  MissileDamage: 50
+  MissileSpeed: 5
+  HomingStrength: 25
+  ArmingTime: 1
   Lifetime: 2

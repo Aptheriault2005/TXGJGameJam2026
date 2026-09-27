@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f37891dfbb293747aa80eb50c1f85ea, type: 3}
-  m_Name: TeslaCoil
+  m_Name: ArmageddonMissiles
   m_EditorClassIdentifier: Assembly-CSharp::TurretStats
-  Name: Basic Tesla Coil
-  ProjectileStats: {fileID: 11400000, guid: 5af4dc863aa9a2b4d86055b8ad5cd3ba, type: 2}
-  FireRate: 0.2
+  Name: Armageddon Missiles
+  ProjectileStats: {fileID: 11400000, guid: b341ca18ab1ce3541a3fd47753db12fd, type: 2}
+  FireRate: 1
   ProjectileSpray: 0
   UpgradePaths: []

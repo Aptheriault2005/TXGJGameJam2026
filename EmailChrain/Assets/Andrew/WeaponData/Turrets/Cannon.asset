@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f37891dfbb293747aa80eb50c1f85ea, type: 3}
-  m_Name: TeslaCoil
+  m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::TurretStats
-  Name: Basic Tesla Coil
-  ProjectileStats: {fileID: 11400000, guid: 5af4dc863aa9a2b4d86055b8ad5cd3ba, type: 2}
-  FireRate: 0.2
-  ProjectileSpray: 0
+  Name: Basic Gun
+  ProjectileStats: {fileID: 11400000, guid: d99aa50334fc18244b76ddeb0d6e9e48, type: 2}
+  FireRate: 0.5
+  ProjectileSpray: 5
   UpgradePaths: []

@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cc23b501afc2374d829a4bc2a0f6311, type: 2}
+  - {fileID: 2100000, guid: ae8287b6b0d554f4a82f4d55029403e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 8029007016593004243}
   - component: {fileID: 6104006671798287956}
   m_Layer: 6
-  m_Name: Missile
+  m_Name: ShrapnalMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

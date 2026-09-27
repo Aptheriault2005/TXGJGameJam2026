@@ -19,3 +19,4 @@ MonoBehaviour:
   UpgradePaths:
   - {fileID: 11400000, guid: 538208987ed8ae440a3f8e6239944e71, type: 2}
   - {fileID: 11400000, guid: 585468407981437488fcb869d18863e6, type: 2}
+  - {fileID: 11400000, guid: 1c56853f56b6e8a4db887040c23b6ca3, type: 2}

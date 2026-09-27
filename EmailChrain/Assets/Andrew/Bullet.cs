@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Bullet : Projectile
 {
     public BulletStats stats;
+    private int pierceCount = 0;
 
     public override void Shoot()
     {
@@ -25,12 +24,24 @@ public class Bullet : Projectile
         DestroyEffect();
     }
 
+    IEnumerator DisableInvAfter(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log($"{gameObject} collides with {other.gameObject}");
         if (other.gameObject.tag == "enemy")
         {
-            DestroyEffect();
+            if (pierceCount < stats.BulletPierceCount)
+            {
+                pierceCount++;
+            }
+            else
+            {
+                DestroyEffect();
+            }
         }
     }
 

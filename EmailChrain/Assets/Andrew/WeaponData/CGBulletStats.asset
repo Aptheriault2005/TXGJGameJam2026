@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CGBulletStats
   m_EditorClassIdentifier: Assembly-CSharp::BulletStats
   Prefab: {fileID: 6250554593722900600, guid: 37d9fa2df393224468c849d627a320d6, type: 3}
+  DestroyEffect: {fileID: 0}
   BulletDamage: 5
   BulletSpeed: 10
   Lifetime: 0.5
-  DestroyEffect: {fileID: 11400000, guid: 205d6f537521b4f4f9a9304a4035d235, type: 2}

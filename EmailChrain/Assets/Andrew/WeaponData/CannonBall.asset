@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde5e1cf41d908a40a874884772f3a72, type: 3}
-  m_Name: SplitBulletStats
+  m_Name: CannonBall
   m_EditorClassIdentifier: Assembly-CSharp::BulletStats
-  Prefab: {fileID: 6250554593722900600, guid: 37d9fa2df393224468c849d627a320d6, type: 3}
-  DestroyEffect: {fileID: 0}
-  BulletDamage: 5
-  BulletSpeed: 10
-  Lifetime: 0.5
-  BulletPierceCount: 2
+  Prefab: {fileID: 6250554593722900600, guid: 8a180256b68bf1b4ba3a5763b99b6050, type: 3}
+  DestroyEffect: {fileID: 11400000, guid: 86a2771eb692270448f80ec70129954b, type: 2}
+  BulletDamage: 10
+  BulletSpeed: 8
+  Lifetime: 1
