@@ -5,6 +5,7 @@ public class MissileStats : ProjectileStats
 {
     public float MissileDamage = 5f;
     public float MissileSpeed = 10.0f;
+    public float HomingStrength = 360f;
     public float ArmingTime = 0.5f;
     public float Lifetime = 2f;
 
@@ -17,7 +18,14 @@ public class MissileStats : ProjectileStats
         ms.SetArmingTime(ArmingTime);
         ms.SetLifetime(Lifetime);
         ms.SetDestroyEffect(DestroyEffect);
+        ms.SetHomingStrength(HomingStrength);
         return ms;
+    }
+
+    public MissileStats SetHomingStrength(float homingStrength)
+    {
+        HomingStrength = homingStrength;
+        return this;
     }
 
     public MissileStats SetPrefab(GameObject prefab)

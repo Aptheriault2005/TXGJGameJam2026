@@ -8,7 +8,7 @@ public class BulletSplitEffect : DestroyEffect
 
     public override void Activate(Vector3 position)
     {
-        Debug.Log("Destroy effect");
+        //Debug.Log("Destroy effect");
         for (int i = 0; i < count; i++)
         {
             GameObject split = ProjectilesSingleton.instance.Spawn(splitProjectileStats.Prefab);

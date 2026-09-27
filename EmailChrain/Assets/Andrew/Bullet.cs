@@ -26,9 +26,13 @@ public class Bullet : Projectile
         DestroyEffect();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        DestroyEffect();
+        Debug.Log($"{gameObject} collides with {other.gameObject}");
+        if (other.gameObject.tag == "enemy")
+        {
+            DestroyEffect();
+        }
     }
 
     public void DestroyEffect()
