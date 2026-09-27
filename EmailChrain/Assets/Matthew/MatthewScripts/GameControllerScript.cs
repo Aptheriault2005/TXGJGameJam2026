@@ -58,6 +58,7 @@ public class GameControllerScript : MonoBehaviour
     void NextWave() {
         waveCounter += 1;
         levelTimer = maxLevelTime;
+        train.currentIndex = 0;
         train.trainCars[0].SelectTrainCar();
         train.trainCars[0].DeselectTrainCar();
         train.trainCars[0].SelectTrainCar();

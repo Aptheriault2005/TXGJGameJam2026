@@ -24,10 +24,9 @@ public class EvilProjectile : MonoBehaviour
             component.GetComponent<HealthComponent>().Damage(1);   // damage the train
             Destroy(gameObject);
         }
-        if (other.gameObject.tag == "Laser")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
+        //if (other.TryGetComponent<Projectile>(out var component)) {
+        //    Destroy(other.gameObject);
+        //    Destroy(gameObject);
+        //}
     }
 }

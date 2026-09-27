@@ -24,7 +24,5 @@ public class UpgradeButton : MonoBehaviour
         upgrade.ApplyUpgrade();
         gcs.UpgradeButtonClicked();
         transform.parent.gameObject.SetActive(false);
-
-
     }
 }

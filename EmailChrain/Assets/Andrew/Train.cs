@@ -11,7 +11,7 @@ public class Train : MonoBehaviour
     [SerializeField] private GameObject trainCarPrefab;
     [SerializeField] private GameObject nextTrainCarPosition;
 
-    private int currentIndex = 0;
+    public int currentIndex = 0;
     private PlayerActions playerActions;
     private System.Random rng;
 

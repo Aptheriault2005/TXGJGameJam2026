@@ -45,10 +45,9 @@ public class EnemyShooter : MonoBehaviour
             component.Die();   
             Destroy(this.gameObject);
         }
-        if (other.gameObject.tag == "Laser")
-        {
+        if (other.TryGetComponent<Projectile>(out var comp2)) {
             Destroy(other.gameObject);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
