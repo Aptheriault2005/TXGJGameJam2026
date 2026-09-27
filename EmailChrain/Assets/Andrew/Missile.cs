@@ -17,6 +17,7 @@ public class Missile : Projectile
 
     public override void Shoot()
     {
+        AudioManager.PlayMissileSFX();
         rb.linearVelocity = transform.forward * 1f;
         //rb.angularVelocity = transform.forward * 1f;
         //transform.rotation = Quaternion.Euler(0, RNG.rng.Next(-90, 90), 0);

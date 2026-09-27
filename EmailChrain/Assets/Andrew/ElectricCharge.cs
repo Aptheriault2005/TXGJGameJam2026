@@ -13,6 +13,7 @@ public class ElectricCharge : Projectile
 
     public override void Shoot()
     {
+        AudioManager.PlayTeslaSFX();
         transform.localScale = Vector3.one * stats.ChargeRadius;
         StartCoroutine(DestroyAfterTime(0.1f));
     }

@@ -35,6 +35,7 @@ public class EnemyShooter : MonoBehaviour
     float rZAmount = 0;
     void Start()
     {
+        AudioManager.PlayBugSFX();
         GameObject[] actorsWithTag = GameObject.FindGameObjectsWithTag("Train Car");
         int target = Random.Range(0, actorsWithTag.Length);
         targetedCar = actorsWithTag[target];
@@ -202,6 +203,7 @@ public class EnemyShooter : MonoBehaviour
 
     void FireP()
     {
+        AudioManager.PlayEnemyShootSFX();
         Instantiate(EnemyP, transform.position, Quaternion.LookRotation(targetedCar.transform.position - transform.position)  );
     }
 
@@ -220,6 +222,11 @@ public class EnemyShooter : MonoBehaviour
     public void OnDeath()
     {
         Destroy(gameObject);
+    }
+
+    public void OnHurt()
+    {
+        AudioManager.PlayEnemyHurtSFX();
     }
 }
 

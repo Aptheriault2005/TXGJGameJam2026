@@ -19,7 +19,7 @@ public class EnemyExploder : MonoBehaviour
     void Start()
     {
         // code ghost ->    
-
+        AudioManager.PlayPhisherSFX();
         GameObject[] actorsWithTag = GameObject.FindGameObjectsWithTag("Train Car");
         int target = Random.Range(0, actorsWithTag.Length);
         targetedCar = actorsWithTag[target];
@@ -78,5 +78,10 @@ public class EnemyExploder : MonoBehaviour
     public void OnDeath()
     {
         Destroy(gameObject);
+    }
+
+    public void OnHurt()
+    {
+        AudioManager.PlayEnemyHurtSFX();
     }
 }
