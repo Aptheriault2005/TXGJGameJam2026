@@ -26,23 +26,26 @@ public class EnemyExploder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetedCar.transform.position, (speed * Time.deltaTime));
+        // if (targetedCar.isDead = true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetedCar.transform.position, (speed * Time.deltaTime));
+        }
+        
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Train Car");
+        if (other.TryGetComponent<PlaceholderTraincar>(out var component))
         {
-            Destroy(other.gameObject);
+            component.Die();
             Destroy(gameObject);
         }
-        if (other.gameObject.tag == "Laser");
+       
+        if (other.gameObject.tag == "Laser")
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
-
-
         }
     }
 }
