@@ -34,9 +34,16 @@ public class TrainCar : MonoBehaviour
         turret.StopTurretAbility();
     }
 
-    public void DisableTrainCar() { isDisabled = true; }
+    public void ReviveTrainCar()
+    {
+        isDisabled = false;
+        if (TryGetComponent<HealthComponent>(out var health))
+        {
+            health.FullHeal();
+        }
+    }
 
-    public void EnableTrainCar() { isDisabled = false; }
+    public void DisableTrainCar() { isDisabled = true; }
 
     public void SelectTrainCar() 
     {
