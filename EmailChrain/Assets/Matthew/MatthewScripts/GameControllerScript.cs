@@ -15,6 +15,8 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] int maxWave;
     [SerializeField] UpgradeSelection usScreen;
     [SerializeField] Train train;
+    private bool isPaused = false;
+    [SerializeField] Canvas menus;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
