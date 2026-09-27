@@ -16,3 +16,6 @@ MonoBehaviour:
   ProjectileStats: {fileID: 11400000, guid: 32f4758449eca3e4cb10a9111b9a127e, type: 2}
   FireRate: 0.2
   ProjectileSpray: 5
+  UpgradePaths:
+  - {fileID: 11400000, guid: 538208987ed8ae440a3f8e6239944e71, type: 2}
+  - {fileID: 11400000, guid: 585468407981437488fcb869d18863e6, type: 2}

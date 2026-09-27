@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c5a518cb0ab9cc46930fa03c7f73f96, type: 3}
-  m_Name: ExplosionSplit
-  m_EditorClassIdentifier: Assembly-CSharp::BulletSplitEffect
-  splitProjectileStats: {fileID: 11400000, guid: d7f328b8350a9124183eb06770167ea8, type: 2}
-  count: 10
+  m_Name: ExplodeOnDeath
+  m_EditorClassIdentifier: Assembly-CSharp::SplitOnDestroyEffect
+  splitProjectileStats: {fileID: 11400000, guid: d7d9980852946aa47bf42f224ed9b1f2, type: 2}
+  count: 1

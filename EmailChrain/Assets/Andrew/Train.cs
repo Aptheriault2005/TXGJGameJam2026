@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Train : MonoBehaviour
 {
+    [SerializeField] private LayerMask mouseTargetLayerMask;
     [SerializeField] private GameObject mousePositionIndicator;
     [SerializeField] private List<TurretStats> turretStatsList = new();
     [SerializeField] public List<TrainCar> trainCars = new ();
@@ -55,7 +56,7 @@ public class Train : MonoBehaviour
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000)) 
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000, mouseTargetLayerMask)) 
         {
             mousePositionIndicator.transform.position = new Vector3(hitInfo.point.x, 0, hitInfo.point.z);
             GetCurrentTrainCar().MousePositionUpdate(mousePositionIndicator);
@@ -157,7 +158,15 @@ public class Train : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {   
             upgrade = UpgradeSystem.CreateUpgrade(this, trainCars, RNG.rng.Next(0, trainCars.Count));
-            upgrades.Add(upgrade);
+            if (upgrade == null)
+            {
+                upgrade = UpgradeSystem.CreateNewTrainCarUpgrade(this, turretStatsList, RNG.rng.Next(0, turretStatsList.Count));
+                upgrades.Add(upgrade);
+            }
+            else
+            {
+                upgrades.Add(upgrade);
+            }
             Debug.Log($"{upgrade.name}, {upgrade.description}");
         }
 

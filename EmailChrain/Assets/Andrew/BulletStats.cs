@@ -3,11 +3,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BulletStats : ProjectileStats
 {
-    //public GameObject Prefab;
     public float BulletDamage = 5f;
     public float BulletSpeed = 10.0f;
     public float Lifetime = 2f;
-    //public DestroyEffect DestroyEffect;
 
     public BulletStats Copy()
     {

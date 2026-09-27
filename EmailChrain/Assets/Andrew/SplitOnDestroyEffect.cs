@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BulletSplitEffect : DestroyEffect
+public class SplitOnDestroyEffect : DestroyEffect
 {
     public ProjectileStats splitProjectileStats;
     public int count;
@@ -16,8 +16,10 @@ public class BulletSplitEffect : DestroyEffect
             split.transform.position = position;
             split.transform.Rotate(Vector3.up, (float)rng.Next(-180, 180));
 
-            split.GetComponent<Bullet>().stats = (BulletStats)splitProjectileStats;
-            split.GetComponent<Bullet>().Shoot();
+            split.GetComponent<Projectile>().ShootProjectile(split, splitProjectileStats);
+
+            //split.GetComponent<Bullet>().stats = (BulletStats)splitProjectileStats;
+            //split.GetComponent<Bullet>().Shoot();
         }
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b677b91fe37c4e9458c4f9903ffaec84, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosionStats
+  Prefab: {fileID: 6176550255100978610, guid: 8f70309777c4f3b479235312ad7b08e9, type: 3}
+  DestroyEffect: {fileID: 0}
+  ExplosionRadius: 5
+  ExplosionDamage: 10

@@ -18,10 +18,26 @@ public static class UpgradeSystem
 
     public static Upgrade CreateUpgrade(Train train, List<TrainCar> cars, int index)
     {
+        List<TurretStats> upgradePaths = cars[index].turret.turretStats.UpgradePaths;
+        if (upgradePaths.Count == 0) { return null; }
+
+        Upgrade upgrade = new Upgrade();
+        TrainCar car = cars[index];
+        upgrade.upgrade = Upgrade.UpgradeType.UpgradeCar;
+        upgrade.train = train;
+        upgrade.trainCar = car;
+        upgrade.turretStats = upgradePaths[RNG.rng.Next(0, upgradePaths.Count)];
+        upgrade.name = $"Upgrade car {index + 1} {cars[index].turret.turretStats.name} -> {upgrade.turretStats.name}";
+        upgrade.description = $"";
+        return upgrade;
+    }
+
+    public static Upgrade CreateUpgradeOld(Train train, List<TrainCar> cars, int index)
+    {
         Upgrade upgrade = new Upgrade();
         TrainCar car = cars[index];
         TurretStats newTurretStats = car.turret.turretStats.Copy();
-        upgrade.upgrade = Upgrade.UpgradeType.ModifyStat;
+        upgrade.upgrade = Upgrade.UpgradeType.UpgradeCar;
         upgrade.train = train;
         upgrade.trainCar = car;
 
@@ -94,7 +110,7 @@ public record Upgrade
 {
     public enum UpgradeType
     {
-        ModifyStat,
+        UpgradeCar,
         NewTrainCar
     }
 
@@ -108,7 +124,7 @@ public record Upgrade
     public void ApplyUpgrade()
     {
         Debug.Log($"Applying upgrade : {name}");
-        if (upgrade == UpgradeType.ModifyStat )
+        if (upgrade == UpgradeType.UpgradeCar )
         {
             trainCar.SetTrainAbility(turretStats);
         }
