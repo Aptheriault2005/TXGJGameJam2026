@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Runtime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyExploder : MonoBehaviour
@@ -37,14 +38,13 @@ public class EnemyExploder : MonoBehaviour
 
         transform.LookAt(targetedCar.transform.position);
         //      if (targetedCar.GetComponent<HealthComponent>().currentHealth > 0 )
-        if (targetedCar.GetComponent<PlaceholderTraincar>().dead == true)
+        if (targetedCar.GetComponent<TrainCar>().IsDestroyed())
         {
             List<GameObject> validActors = new List<GameObject>();
             GameObject[] actorsWithTag = GameObject.FindGameObjectsWithTag("Train Car");
             foreach (GameObject actor in actorsWithTag)
             {
-
-                if (actor.GetComponent<PlaceholderTraincar>().dead == false)
+                if (!actor.GetComponent<TrainCar>().IsDestroyed())
                 {
                     validActors.Add(actor);
                 }
@@ -53,9 +53,7 @@ public class EnemyExploder : MonoBehaviour
             {
                 int target = Random.Range(0, validActors.Count);
                 targetedCar = validActors[target];
-                
             }
-
         }
         //Switch code
 
