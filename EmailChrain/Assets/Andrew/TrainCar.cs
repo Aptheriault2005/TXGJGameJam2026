@@ -7,7 +7,7 @@ public class TrainCar : MonoBehaviour
     public Turret turret;
 
     private bool isDisabled = false;
-    private bool isSelected = false;
+    public bool isSelected = false;
 
     public void MousePositionUpdate(GameObject mousePosIndicator)
     {

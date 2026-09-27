@@ -83,7 +83,7 @@ public class Train : MonoBehaviour
     private void OnSelectionMoveUp(InputAction.CallbackContext context) 
     {
         Debug.Log($"{currentIndex}");
-        if (currentIndex > 0)
+        if (GetCurrentTrainCar().isSelected && currentIndex > 0)
         {
             GetCurrentTrainCar().DeselectTrainCar();
             currentIndex--;
@@ -94,7 +94,7 @@ public class Train : MonoBehaviour
     private void OnSelectionMoveDown(InputAction.CallbackContext context)
     {
         Debug.Log($"{currentIndex}");
-        if (currentIndex < trainCars.Count - 1) 
+        if (GetCurrentTrainCar().isSelected && currentIndex < trainCars.Count - 1) 
         {
             GetCurrentTrainCar().DeselectTrainCar();
             currentIndex++;

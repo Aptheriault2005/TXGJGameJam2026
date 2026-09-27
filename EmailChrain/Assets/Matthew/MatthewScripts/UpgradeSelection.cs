@@ -31,9 +31,9 @@ public class UpgradeSelection : MonoBehaviour
 
         List<Upgrade> upgrades = train.GetUpgrades();
 
-        top.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = upgrades[0].name;
-        mid.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = upgrades[1].name;
-        bot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = upgrades[2].name;
+        top.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (upgrades[0].name + '\n' + upgrades[0].description);
+        mid.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (upgrades[1].name + '\n' + upgrades[1].description);
+        bot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (upgrades[2].name + '\n' + upgrades[2].description);
 
         top.GetComponent<UpgradeButton>().upgrade = upgrades[0];
         mid.GetComponent<UpgradeButton>().upgrade = upgrades[1];
