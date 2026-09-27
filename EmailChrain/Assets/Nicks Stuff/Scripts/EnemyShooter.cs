@@ -57,14 +57,13 @@ public class EnemyShooter : MonoBehaviour
 
             transform.LookAt(targetedCar.transform.position);
             //      if (targetedCar.GetComponent<HealthComponent>().currentHealth > 0 )
-            if (targetedCar.GetComponent<PlaceholderTraincar>().dead == true)
+            if (!targetedCar.GetComponent<TrainCar>().IsDestroyed())
             {
                 List<GameObject> validActors = new List<GameObject>();
                 GameObject[] actorsWithTag = GameObject.FindGameObjectsWithTag("Train Car");
                 foreach (GameObject actor in actorsWithTag)
                 {
-                    
-                    if (actor.GetComponent<PlaceholderTraincar>().dead == false) 
+                    if (!actor.GetComponent<TrainCar>().IsDestroyed()) 
                     {
                         validActors.Add(actor);
                     }
@@ -81,30 +80,29 @@ public class EnemyShooter : MonoBehaviour
 
             // Bad hover code
 
+            //if (hovered == false)
+            //{
 
-            if (hovered == false)
-            {
-                
-                int xset = Random.Range(-1, 2);
-                int zset = Random.Range(-1, 2);
-                if (xset == 0 && zset == 0)
-                {
-                    xset = 1;
-                }
-                rxAmount = (float)xset;
-                rZAmount = (float)zset;
+            //    int xset = Random.Range(-1, 2);
+            //    int zset = Random.Range(-1, 2);
+            //    if (xset == 0 && zset == 0)
+            //    {
+            //        xset = 1;
+            //    }
+            //    rxAmount = (float)xset;
+            //    rZAmount = (float)zset;
 
-                Transform hoverSpot = transform;
-                hoverSpot.position += new Vector3(rxAmount, 0f, rZAmount);
-              //  transform.RotateAround(hoverSpot.position, Vector3.left, rSpeed * Time.deltaTime);
-                hovered = true;
-            }
-            else
-            {
-                Transform hoverSpot = transform;
-                hoverSpot.position += new Vector3(rxAmount, 0f, rZAmount);
-               // transform.RotateAround(hoverSpot.position, Vector3.left, rSpeed * Time.deltaTime);
-            }
+            //    Transform hoverSpot = transform;
+            //    hoverSpot.position += new Vector3(rxAmount, 0f, rZAmount);
+            //    //  transform.RotateAround(hoverSpot.position, Vector3.left, rSpeed * Time.deltaTime);
+            //    hovered = true;
+            //}
+            //else
+            //{
+            //    Transform hoverSpot = transform;
+            //    hoverSpot.position += new Vector3(rxAmount, 0f, rZAmount);
+            //    // transform.RotateAround(hoverSpot.position, Vector3.left, rSpeed * Time.deltaTime);
+            //}
 
 
             // Bad hover code
@@ -112,23 +110,16 @@ public class EnemyShooter : MonoBehaviour
 
             // bad strafe 
 
-            if (goingLeft)
-            {
-                Vector3 offsetDir = Quaternion.Euler(0, 90, 0) * transform.forward;
-               // transform.position = offsetDir * sSpeed * Time.deltaTime;
-            }
-            else
-            {
-                Vector3 offsetDir = Quaternion.Euler(0, -90, 0) * transform.forward;
-                // transform.position = offsetDir * sSpeed * Time.deltaTime;
-            }
-            
-            
-
-
-
-
-
+            //if (goingLeft)
+            //{
+            //    Vector3 offsetDir = Quaternion.Euler(0, 90, 0) * transform.forward;
+            //   // transform.position = offsetDir * sSpeed * Time.deltaTime;
+            //}
+            //else
+            //{
+            //    Vector3 offsetDir = Quaternion.Euler(0, -90, 0) * transform.forward;
+            //    // transform.position = offsetDir * sSpeed * Time.deltaTime;
+            //}
         }
         else
         {
@@ -137,14 +128,14 @@ public class EnemyShooter : MonoBehaviour
 
             transform.LookAt(targetedCar.transform.position);
             //      if (targetedCar.GetComponent<HealthComponent>().currentHealth > 0 )
-            if (targetedCar.GetComponent<PlaceholderTraincar>().dead == true)
+            if (targetedCar.GetComponent<TrainCar>().IsDestroyed())
             {
                 List<GameObject> validActors = new List<GameObject>();
                 GameObject[] actorsWithTag = GameObject.FindGameObjectsWithTag("Train Car");
                 foreach (GameObject actor in actorsWithTag)
                 {
 
-                    if (actor.GetComponent<PlaceholderTraincar>().dead == false)
+                    if (!actor.GetComponent<TrainCar>().IsDestroyed())
                     {
                         validActors.Add(actor);
                     }
