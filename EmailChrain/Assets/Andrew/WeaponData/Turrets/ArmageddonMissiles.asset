@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f37891dfbb293747aa80eb50c1f85ea, type: 3}
   m_Name: ArmageddonMissiles
   m_EditorClassIdentifier: Assembly-CSharp::TurretStats
+  TurretModelPrefab: {fileID: 5693996430687588721, guid: 05ca8dce933135a47950c1a9b15ae0ac, type: 3}
   Name: Armageddon Missiles
   ProjectileStats: {fileID: 11400000, guid: b341ca18ab1ce3541a3fd47753db12fd, type: 2}
   FireRate: 1
