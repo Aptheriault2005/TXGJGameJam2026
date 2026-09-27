@@ -15,6 +15,11 @@ public class Missile : Projectile
         StartCoroutine(ArmMissile(stats.ArmingTime));
     }
 
+    public override float GetDamage()
+    {
+        return stats.MissileDamage;
+    }
+
     IEnumerator ArmMissile(float time)
     {
         yield return new WaitForSeconds(time);
@@ -36,7 +41,7 @@ public class Missile : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        //DestroyEffect();
+        DestroyEffect();
     }
 
     public void DestroyEffect()

@@ -18,7 +18,6 @@ public class EnemySpawner : MonoBehaviour
 
     double xdistance;
 
-    private List<GameObject> spawnList = new List<GameObject>();
     private bool isPaused = false;
 
 
@@ -31,13 +30,25 @@ public class EnemySpawner : MonoBehaviour
 
     public void StopSpawner()
     {
-        foreach (GameObject spawn in spawnList) { Destroy(spawn); }
+        Debug.Log("PAUSED");
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
+        { 
+            if (enemy.TryGetComponent<HealthComponent>(out var health))
+            {
+                health.Kill();
+            }
+            else
+            {
+                Destroy(enemy);
+            }
+        }
 
         isPaused = true;
     }
 
     public void ResumeSpawner()
     {
+        Debug.Log("RESUME");
         isPaused = false;
     }
 
@@ -64,7 +75,6 @@ public class EnemySpawner : MonoBehaviour
         {
             leftSpawn = false;
             xdistance += 1;
-
         }
         
         Debug.Log(new Vector3((float)xdistance, 0, randz));
@@ -73,14 +83,10 @@ public class EnemySpawner : MonoBehaviour
         if (randEnemy == 1)
         {
             GameObject exploder = Instantiate(exploderPrefab, new Vector3((float)xdistance, 0, randz), Quaternion.identity);
-            spawnList.Add(exploder);
         }
         else if (randEnemy == 0)
         {
             GameObject shooter = Instantiate(shooterPrefab, new Vector3((float)xdistance, 0, randz), Quaternion.identity);
-            spawnList.Add(shooter);
         }
-
     }
-
 }

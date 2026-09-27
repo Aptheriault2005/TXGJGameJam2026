@@ -5,8 +5,9 @@ public class EnemyExploder : MonoBehaviour
 {
 
     [SerializeField] float speed = 10f;
-    [SerializeField] float health = 10f;
+    //[SerializeField] float health = 10f;
     [SerializeField] GameObject targetedCar;
+    [SerializeField] HealthComponent healthComponent;
 
     private void Awake()
     {
@@ -30,8 +31,6 @@ public class EnemyExploder : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, targetedCar.transform.position, (speed * Time.deltaTime));
         }
-        
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,12 +38,19 @@ public class EnemyExploder : MonoBehaviour
         if (other.TryGetComponent<TrainCar>(out var component))
         {
             component.GetComponent<HealthComponent>().Damage(1);
-            Destroy(gameObject);
+            healthComponent.Kill();
+            //Destroy(gameObject);
         }
        
         if (other.TryGetComponent<Projectile>(out var comp2)) {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            healthComponent.Damage(comp2.GetDamage());
+            //Destroy(other.gameObject);
+            //Destroy(gameObject);
         }
+    }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }

@@ -15,6 +15,11 @@ public class Bullet : Projectile
         StartCoroutine(DestroyAfterTime(stats.Lifetime));
     }
 
+    public override float GetDamage()
+    {
+        return stats.BulletDamage;
+    }
+
     IEnumerator DestroyAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
@@ -23,7 +28,7 @@ public class Bullet : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        //DestroyEffect();
+        DestroyEffect();
     }
 
     public void DestroyEffect()

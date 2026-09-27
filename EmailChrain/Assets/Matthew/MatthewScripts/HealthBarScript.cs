@@ -36,4 +36,9 @@ public class HealthBarScript : MonoBehaviour
         print("yeouch");
         hpBar.value = hc.currentHealth / hc.maxHealth;
     }
+
+    public void OnDeath()
+    {
+        Destroy(hpBar.gameObject);
+    }
 }

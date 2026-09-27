@@ -5,4 +5,6 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     public abstract void Shoot();
+
+    public abstract float GetDamage();
 }

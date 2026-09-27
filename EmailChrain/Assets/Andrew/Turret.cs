@@ -87,7 +87,7 @@ public class ProjectileAbility : ITrainCarAbility
 
     public void UseAbility()
     {
-        Debug.Log($"{Turret.gameObject.name} train car abilty used");
+        //Debug.Log($"{Turret.gameObject.name} train car abilty used");
         GameObject projectile = ProjectilesSingleton.instance.Spawn(Turret.GetProjectilePrefab());
         projectile.gameObject.transform.position = Turret.GetProjectileSpawnPoint().transform.position;
         projectile.gameObject.transform.rotation = Turret.GetProjectileSpawnPoint().transform.rotation;

@@ -38,6 +38,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
         playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed -= OnSelfDamage;
+        playerActions.PlayerControls.Disable();
         playerActions.Dispose();
     }
 

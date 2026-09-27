@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class GameControllerScript : MonoBehaviour
 {
-    public UnityEvent WaveEndEvent;
-    public UnityEvent WaveStartEvent;
+    public UnityEvent WaveEndEvent = new();
+    public UnityEvent WaveStartEvent = new();
 
     public float levelTimer;
     public float maxLevelTime;
@@ -36,7 +36,6 @@ public class GameControllerScript : MonoBehaviour
     }
 
     void WaveEnd() {
-        WaveEndEvent.Invoke();
 
         if (waveCounter >= maxWave) {
             SceneManager.LoadScene("EndWinScreen");
@@ -48,6 +47,8 @@ public class GameControllerScript : MonoBehaviour
             }
             usScreen.Displayed();
         }
+
+        WaveEndEvent?.Invoke();
     }
 
     public void UpgradeButtonClicked() {
@@ -67,7 +68,7 @@ public class GameControllerScript : MonoBehaviour
         train.trainCars[0].DeselectTrainCar();
         train.trainCars[0].SelectTrainCar();
 
-        WaveStartEvent.Invoke();
+        WaveStartEvent?.Invoke();
 
         StartCoroutine(EndWaveDelay(maxLevelTime + 1.5f));
     }
