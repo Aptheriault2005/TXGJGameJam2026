@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretModelPrefab: {fileID: 919132149155446097, guid: 60f80ad27355bc740be99096930e60f0, type: 3}
   Name: HighExplosive Missiles
   ProjectileStats: {fileID: 11400000, guid: dcc9cc7f5f1d1944dbf5cd283600034a, type: 2}
-  FireRate: 0.5
+  FireRate: 0.7
   ProjectileSpray: 0
   UpgradePaths:
   - {fileID: 11400000, guid: 7c955e3eca7620146bcb9b65868502cd, type: 2}
