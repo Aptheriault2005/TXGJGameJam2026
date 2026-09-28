@@ -480,8 +480,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxHealth: 50
-  currentHealth: 50
+  maxHealth: 20
+  currentHealth: 20
 --- !u!1001 &9082186289042764905
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Explosion : Projectile
 
     public override void Shoot()
     {
+        AudioManager.PlayExplosionSFX();
         transform.localScale = Vector3.one * stats.ExplosionRadius;
         StartCoroutine(DestroyAfterTime(0.1f));
     }

@@ -8,6 +8,7 @@ public class Bullet : Projectile
 
     public override void Shoot()
     {
+        AudioManager.PlayBulletSFX();
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.linearVelocity = transform.forward * stats.BulletSpeed;
         StartCoroutine(DestroyAfterTime(stats.Lifetime));
