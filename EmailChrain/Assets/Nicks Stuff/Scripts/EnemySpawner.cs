@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -22,10 +23,19 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] int groupPercent;
     bool leftSpawn = false;
+
+
+    private float realSpawnRate;
+    private int Wave = 1;
+    [SerializeField] GameControllerScript gcs;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0, SpawnRate);
+        realSpawnRate = SpawnRate - Wave / 10;
+        groupPercent = Wave * 5;
+        InvokeRepeating("SpawnEnemy", 0, realSpawnRate);
     }
 
     public void StopSpawner()
@@ -50,12 +60,24 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("RESUME");
         isPaused = false;
+
+        Wave = gcs.waveCounter;
+        realSpawnRate -= ((float)Wave / (float)10);
+        groupPercent = Wave * 5;
+
+        Debug.Log(Wave);
+        Debug.Log(realSpawnRate);
+        CancelInvoke("SpawnEnemy");
+
+        InvokeRepeating("SpawnEnemy", 0, realSpawnRate);
+
     }
 
     void SpawnEnemy()
     {
         if (isPaused) return;
 
+        
 
         bool groupSpawn = (UnityEngine.Random.Range(1, 101) <= groupPercent);
 
