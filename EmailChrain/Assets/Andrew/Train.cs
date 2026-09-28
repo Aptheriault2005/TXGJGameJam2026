@@ -30,7 +30,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.UseAbility.canceled += OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed += OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed += OnSelectionMoveDown;
-        //playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
+        playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
         //playerActions.PlayerControls.DestroyTrainCar.performed += OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed += OnSelfDamage;
         playerActions.PlayerControls.Pause.performed += OnPause;
@@ -42,7 +42,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.UseAbility.canceled -= OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed -= OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed -= OnSelectionMoveDown;
-        //playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
+        playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
         //playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed -= OnSelfDamage;
         playerActions.PlayerControls.Pause.performed -= OnPause;
@@ -198,7 +198,7 @@ public class Train : MonoBehaviour
         if (trainSections.Count > 0)
         {
             Vector3 MidCarPos = trainSections[trainSections.Count / 2].transform.position;
-            Camera.main.transform.position = new Vector3 (MidCarPos.x, 5 + (trainSections.Count * TrainLength), MidCarPos.z);
+            Camera.main.transform.position = new Vector3 (MidCarPos.x + 0.6f, 5 + (trainSections.Count * TrainLength), MidCarPos.z);
         }
     }
 
