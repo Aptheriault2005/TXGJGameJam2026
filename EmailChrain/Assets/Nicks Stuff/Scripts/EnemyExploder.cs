@@ -63,7 +63,7 @@ public class EnemyExploder : MonoBehaviour
     {
         if (other.TryGetComponent<TrainCar>(out var component))
         {
-            component.GetComponent<HealthComponent>().Damage(1);
+            component.GetComponent<HealthComponent>().Damage(13);
             healthComponent.Kill();
             //Destroy(gameObject);
         }

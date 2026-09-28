@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretModelPrefab: {fileID: 919132149155446097, guid: 60f80ad27355bc740be99096930e60f0, type: 3}
   Name: Basic Missiles
   ProjectileStats: {fileID: 11400000, guid: 7460cb35130c3e347bbefe429ade7cfc, type: 2}
-  FireRate: 0.5
+  FireRate: 0.7
   ProjectileSpray: 0
   UpgradePaths:
   - {fileID: 11400000, guid: ae65eec89b0ec4e45bb9ff47ea9e9b48, type: 2}

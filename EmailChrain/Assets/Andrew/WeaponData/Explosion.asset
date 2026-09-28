@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 6176550255100978610, guid: 8f70309777c4f3b479235312ad7b08e9, type: 3}
   DestroyEffect: {fileID: 0}
   ExplosionRadius: 5
-  ExplosionDamage: 10
+  ExplosionDamage: 4

@@ -15,6 +15,6 @@ MonoBehaviour:
   TurretModelPrefab: {fileID: 919132149155446097, guid: 60f80ad27355bc740be99096930e60f0, type: 3}
   Name: Armageddon Missiles
   ProjectileStats: {fileID: 11400000, guid: b341ca18ab1ce3541a3fd47753db12fd, type: 2}
-  FireRate: 1
+  FireRate: 2.5
   ProjectileSpray: 0
   UpgradePaths: []

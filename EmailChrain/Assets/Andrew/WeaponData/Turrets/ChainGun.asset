@@ -15,6 +15,6 @@ MonoBehaviour:
   TurretModelPrefab: {fileID: 919132149155446097, guid: ab22b67431348794dbd53742d79b1a42, type: 3}
   Name: Chain Gun
   ProjectileStats: {fileID: 11400000, guid: e4f8987971786714cbb836f75194506e, type: 2}
-  FireRate: 0.05
+  FireRate: 0.07
   ProjectileSpray: 15
   UpgradePaths: []

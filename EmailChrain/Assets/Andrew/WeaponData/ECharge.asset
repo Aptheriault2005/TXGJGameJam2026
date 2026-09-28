@@ -15,5 +15,5 @@ MonoBehaviour:
   Prefab: {fileID: 2008820814661081260, guid: bdabcfb1bf0844c48934b03cc0b6d70e, type: 3}
   DestroyEffect: {fileID: 0}
   ChargeDamage: 10
-  ChargeRadius: 5
+  ChargeRadius: 8
   JumpCount: 2

@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5006387051f464459eaed30bc763418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  SpawnRate: 4
+  SpawnRate: 3
   exploderPrefab: {fileID: 6862359924816104899, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
   shooterPrefab: {fileID: 5171027077973475604, guid: d9ff7b14066919d428de73a2fab6893d, type: 3}
   groupPercent: 0
+  gcs: {fileID: 0}

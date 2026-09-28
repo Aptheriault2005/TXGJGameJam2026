@@ -16,6 +16,6 @@ MonoBehaviour:
   DestroyEffect: {fileID: 0}
   MissileDamage: 25
   MissileSpeed: 10
-  HomingStrength: 45
-  ArmingTime: 0.5
+  HomingStrength: 10
+  ArmingTime: 1
   Lifetime: 2

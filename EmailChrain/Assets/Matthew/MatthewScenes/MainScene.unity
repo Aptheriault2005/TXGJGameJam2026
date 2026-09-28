@@ -1711,8 +1711,8 @@ MonoBehaviour:
   mousePositionIndicator: {fileID: 1688676747}
   turretStatsList:
   - {fileID: 11400000, guid: 3cdb97c92db099543b9b8d57647a19ee, type: 2}
-  - {fileID: 11400000, guid: 163c8ac03aee64b42a52a372913079f5, type: 2}
   - {fileID: 11400000, guid: 223813edbacda1c4da2340117fe1c731, type: 2}
+  - {fileID: 11400000, guid: 163c8ac03aee64b42a52a372913079f5, type: 2}
   trainCars: []
   trainCarPrefab: {fileID: 1238334312049360247, guid: e15a7410504f110498cfdb537e18bb8c, type: 3}
   trainCarFrontPrefab: {fileID: 1238334312049360247, guid: c88549ef538c09040bb9b5dfc2bd8fdd, type: 3}
@@ -2747,10 +2747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5006387051f464459eaed30bc763418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  SpawnRate: 1
+  SpawnRate: 3
   exploderPrefab: {fileID: 6862359924816104899, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
   shooterPrefab: {fileID: 5171027077973475604, guid: d9ff7b14066919d428de73a2fab6893d, type: 3}
   groupPercent: 0
+  gcs: {fileID: 168262696}
 --- !u!4 &2358537943886340410
 Transform:
   m_ObjectHideFlags: 0
@@ -2846,7 +2847,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1791252887}
   - {fileID: 1967920993}
-  - {fileID: 168262697}
   - {fileID: 404684053}
   - {fileID: 1564288178}
   - {fileID: 1012636871}
@@ -2857,3 +2857,4 @@ SceneRoots:
   - {fileID: 2358537943886340410}
   - {fileID: 111257564}
   - {fileID: 6422315205103663622}
+  - {fileID: 168262697}
