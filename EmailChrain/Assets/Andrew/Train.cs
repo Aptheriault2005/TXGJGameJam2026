@@ -30,7 +30,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.UseAbility.canceled += OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed += OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed += OnSelectionMoveDown;
-        //playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
+        playerActions.PlayerControls.NewTrainCar.performed += OnNewTrainCar;
         //playerActions.PlayerControls.DestroyTrainCar.performed += OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed += OnSelfDamage;
         playerActions.PlayerControls.Pause.performed += OnPause;
@@ -42,7 +42,7 @@ public class Train : MonoBehaviour
         playerActions.PlayerControls.UseAbility.canceled -= OnAbilityCanceled;
         playerActions.PlayerControls.MoveSelectionUp.performed -= OnSelectionMoveUp;
         playerActions.PlayerControls.MoveSelectionDown.performed -= OnSelectionMoveDown;
-        //playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
+        playerActions.PlayerControls.NewTrainCar.performed -= OnNewTrainCar;
         //playerActions.PlayerControls.DestroyTrainCar.performed -= OnDestroyTrainCar;
         playerActions.PlayerControls.SelfDamage.performed -= OnSelfDamage;
         playerActions.PlayerControls.Pause.performed -= OnPause;
