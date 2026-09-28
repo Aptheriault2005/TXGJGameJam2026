@@ -17,6 +17,8 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] Train train;
     private bool isPaused = false;
     [SerializeField] Canvas menus;
+    [SerializeField] Image txtBg;
+    [SerializeField] TMPro.TextMeshProUGUI txt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,6 +56,8 @@ public class GameControllerScript : MonoBehaviour
     }
 
     public void UpgradeButtonClicked() {
+        txt.gameObject.SetActive(false);
+        txtBg.gameObject.SetActive(false);
         StartCoroutine(NextWaveDelay(1));
     }
 
