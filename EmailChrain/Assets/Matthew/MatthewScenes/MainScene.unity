@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &99951937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1841,7 +1841,7 @@ Transform:
   m_GameObject: {fileID: 1208295505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2927,10 +2927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5006387051f464459eaed30bc763418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  SpawnRate: 100
+  SpawnRate: 3
   exploderPrefab: {fileID: 6862359924816104899, guid: 0ebcb20a1115b6a48a2f505a56c69b05, type: 3}
   shooterPrefab: {fileID: 5171027077973475604, guid: d9ff7b14066919d428de73a2fab6893d, type: 3}
   groupPercent: 0
+  gcs: {fileID: 168262696}
 --- !u!1001 &1553849708329392167
 PrefabInstance:
   m_ObjectHideFlags: 0
